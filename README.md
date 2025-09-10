@@ -13,7 +13,7 @@ Desenvolvimento de um sistema de gerenciamento hospitalar utilizando os conceito
 - **Nome completo:** Luiz Gustavo da Conceição Souza
 - **Matrícula:** 242015915
 - **Curso:** Engenharias
-- **Turma:** [Preencher aqui]
+- **Turma:** 02 24M5 24T1
 
 ---
 
