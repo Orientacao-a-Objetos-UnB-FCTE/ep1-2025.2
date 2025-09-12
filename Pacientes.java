@@ -2,12 +2,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Pacientes implements usuariospac {
-    public String Nome;
-    public String Cpf;
-    public byte Idade;
-    public String Id;
-    public List<String> HistoricoInternacoes;
-    public List<String> HistoricoConsultas;
+    private String Nome;
+    private String Cpf;
+    private byte Idade;
+    private String Id;
+    private List<String> HistoricoInternacoes;
+    private List<String> HistoricoConsultas;
 
     public Pacientes(String Nome, String Cpf, byte Idade, String Id){
         this.Nome = Nome;
