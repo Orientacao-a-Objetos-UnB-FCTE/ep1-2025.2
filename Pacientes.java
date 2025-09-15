@@ -2,44 +2,52 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Pacientes implements usuariospac {
-    private String Nome;
-    private String Cpf;
-    private byte Idade;
-    private String Id;
-    private List<String> HistoricoInternacoes;
-    private List<String> HistoricoConsultas;
+    private String nome;
+    private String cpf;
+    private byte idade;
+    private String id;
+    private List<String> historicoInternacoes;
+    private List<String> historicoConsultas;
 
     public Pacientes(String Nome, String Cpf, byte Idade, String Id){
-        this.Nome = Nome;
-        this.Cpf = Cpf;
-        this.Idade = Idade;
-        this.Id = Id;
-        this.HistoricoInternacoes = new ArrayList<>();
-        this.HistoricoConsultas = new ArrayList<>();
+        this.nome = nome;
+        this.cpf = cpf;
+        this.idade = idade;
+        this.id = id;
+        this.historicoConsultas = new ArrayList<>();
+        this.historicoInternacoes = new ArrayList<>();
 
     }
     @Override
     public String getNome() {
-        return Nome;
+        return nome;
     }
     @Override
     public byte getIdade() {
-        return Idade;
+        return idade;
     }
     @Override
     public String getId() {
-        return Id;
+        return id;
     }
     @Override
     public String getCPF() {
-        return Cpf;
+        return cpf;
     }
     @Override
     public String[] getHistoricoInternacoes() {
-        return HistoricoInternacoes.toArray(new String[0]);
+        return historicoConsultas.toArray(new String[0]);
     }
     @Override
     public String[] getHistoricoConsultas() {
-        return HistoricoConsultas.toArray(new String[0]);
+        return historicoInternacoes.toArray(new String[0]);
     }
+
+    public void adicionarConsulta(String consulta){
+        historicoConsultas.add(consulta);
+    }
+    public void adicionarInternacao(String internacao){
+        historicoInternacoes.add(internacao);
+    }
+
 }
