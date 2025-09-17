@@ -22,6 +22,6 @@ public class Consulta {
         return datahorario;
     }
     public String toString(){
-        return "Consulta com: " + medicos.getnome() + "Paciente-->" + paciente.getNome() + "às" + datahorario + "para" + descricao;
+        return "/Consulta com: " + medicos.getnome() + "Paciente-->" + paciente.getNome() + "às" + datahorario + "para" + descricao + "/";
     }
 }

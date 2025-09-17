@@ -8,6 +8,7 @@ public class Pacientes implements usuariospac {
     private String id;
     private List<String> historicoInternacoes;
     private List<String> historicoConsultas;
+    private List<Consulta> consultas;
 
     public Pacientes(String Nome, String Cpf, byte Idade, String Id){
         this.nome = nome;
@@ -16,6 +17,7 @@ public class Pacientes implements usuariospac {
         this.id = id;
         this.historicoConsultas = new ArrayList<>();
         this.historicoInternacoes = new ArrayList<>();
+        this.consultas = new ArrayList<>();
 
     }
     @Override
@@ -36,18 +38,23 @@ public class Pacientes implements usuariospac {
     }
     @Override
     public String[] getHistoricoInternacoes() {
-        return historicoConsultas.toArray(new String[0]);
+        return historicoInternacoes.toArray(new String[0]);
     }
     @Override
     public String[] getHistoricoConsultas() {
-        return historicoInternacoes.toArray(new String[0]);
+        return historicoConsultas.toArray(new String[0]);
     }
-
-    public void adicionarConsulta(String consulta){
-        historicoConsultas.add(consulta);
+    public void adicionarConsulta(Consulta consulta){
+        consultas.add(consulta);
+    }
+    public List<Consulta> getConsultas() {
+        return consultas;
     }
     public void adicionarInternacao(String internacao){
         historicoInternacoes.add(internacao);
+    }
+    public String toString(){
+        return "/Paciente:"+ nome + "CPF:" + cpf + "Idade:" + idade + "Identificação:" + id +"/";
     }
 
 }
