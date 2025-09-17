@@ -24,13 +24,13 @@ public class Main {
          pacientes.add(p6); pacientes.add(p7); pacientes.add(p8); pacientes.add(p9); pacientes.add(p10); pacientes.add(p11);
 
         List<Medicos> medicos = new ArrayList<>();
-        Medicos m0 = new Medicos("Jill Valentine", "DF001", "Clínico-Geral", "R$250,00", "Segunda");
-        Medicos m1 = new Medicos("Joel Miller", "DF002", "Pediatra", "R$150,00", "Segunda");
-        Medicos m2 = new Medicos("Nathan Drake", "DF003", "Cardiologista", "R$80,00", "Segunda");
-        Medicos m3 = new Medicos("Lara Croft", "DF004", "Pneumologista", "R$125,00", "Segunda");
-        Medicos m4 = new Medicos("Geralt de Rívia", "DF005", "Infectologista", "R$110,00", "Segunda");
-        Medicos m5 = new Medicos("Gordon Freeman", "DF006", "Geriatra", "R", "Segunda");
-        Medicos m6 = new Medicos("James Sunderland", "DF007", "Psiquiatra", "R$100,00", "Segunda");
+        Medicos m0 = new Medicos("Dra. Jill Valentine", "DF001", "Clínico-Geral", "R$250,00", "Segunda");
+        Medicos m1 = new Medicos("Dr. Joel Miller", "DF002", "Pediatra", "R$150,00", "Segunda");
+        Medicos m2 = new Medicos("Dr. Nathan Drake", "DF003", "Cardiologista", "R$80,00", "Segunda");
+        Medicos m3 = new Medicos("Dra. Lara Croft", "DF004", "Pneumologista", "R$125,00", "Segunda");
+        Medicos m4 = new Medicos("Dr. Geralt de Rívia", "DF005", "Infectologista", "R$110,00", "Segunda");
+        Medicos m5 = new Medicos("Dr. Gordon Freeman", "DF006", "Geriatra", "R", "Segunda");
+        Medicos m6 = new Medicos("Dr. James Sunderland", "DF007", "Psiquiatra", "R$100,00", "Segunda");
 
          medicos.add(m0); medicos.add(m1); medicos.add(m2); medicos.add(m3); medicos.add(m4); medicos.add(m5); medicos.add(m6);
 
