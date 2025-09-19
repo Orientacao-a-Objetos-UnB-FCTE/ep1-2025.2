@@ -3,4 +3,5 @@ public interface usuariosmed {
     String getcrm();
     String getEspecialidade();
     double getcustoDaconsulta();
+    String[] gethistoricoDehorario();
 }
