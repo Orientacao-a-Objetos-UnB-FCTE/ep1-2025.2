@@ -5,19 +5,15 @@ public class Medicos implements usuariosmed {
     private String nome;
     private String crm;
     private String Especialidade;
-    private String custoDaconsulta;
-    private String agendaDeconsulta;
-    private List<String>historicoDehorario;
-    private List<Consulta> consultas;
+    private double custoDaconsulta;
+    private List<String> agenda = new ArrayList<>();
+    private List<Consulta> consultas = new ArrayList<>();
 
-    public Medicos(String nome, String crm, String Especialidade, String custaDaconsulta, String agendaDeconsulta){
+    public Medicos(String nome, String crm, String Especialidade, double custaDaconsulta){
         this.nome=nome;
         this.crm=crm;
         this.Especialidade=Especialidade;
         this.custoDaconsulta=custaDaconsulta;
-        this.agendaDeconsulta=agendaDeconsulta;
-        this.historicoDehorario= new ArrayList<>();
-        this.consultas = new ArrayList<>();
 
     }
     @Override
@@ -33,16 +29,8 @@ public class Medicos implements usuariosmed {
         return Especialidade;
     }
     @Override
-    public String getcustoDaconsulta() {
+    public double getcustoDaconsulta() {
         return custoDaconsulta;
-    }
-    @Override
-    public String getagendaDeconsulta() {
-        return agendaDeconsulta;
-    }
-    @Override
-    public String[] gethistoricoDehorario() {
-        return historicoDehorario.toArray(new String[0]);
     }
     public void adicionarConsulta(Consulta consulta){
         consultas.add(consulta);
@@ -51,7 +39,7 @@ public class Medicos implements usuariosmed {
         return consultas;
     }
     public void adicionarHorario(String horario){
-        historicoDehorario.add(horario);
+        agenda.add(horario);
     }
     public String toString(){
         return "Doutor(a):" + nome + "CRM:" + crm + "Especialidade:" + Especialidade + "Valor da consulta:" + custoDaconsulta;
