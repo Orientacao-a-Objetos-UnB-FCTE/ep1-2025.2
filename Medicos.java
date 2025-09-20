@@ -39,13 +39,8 @@ public class Medicos implements usuariosmed {
     public String[] gethistoricoDehorario() {
         return agenda.toArray(new String[0]);
     }
-
     public Set<String> getAgendaDeConsulta(){
         return agenda;
-    }
-    public void adicionarConsulta(Consulta consulta){
-        consultas.add(consulta);
-        historicoConsultas.add("Consulta com" + consulta.getMedicos().getnome() + "em" + consulta.getDatahorario());
     }
     public List<Consulta> getConsultas() {
         return consultas;

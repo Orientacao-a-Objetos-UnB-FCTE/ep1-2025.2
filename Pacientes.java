@@ -46,6 +46,7 @@ public class Pacientes implements usuariospac {
     }
     public void adicionarConsulta(Consulta consulta){
         consultas.add(consulta);
+        historicoConsultas.add("Consulta com" + consulta.getMedicos().getnome() + "em" + consulta.getDatahorario());
     }
     public List<Consulta> getConsultas() {
         return consultas;
