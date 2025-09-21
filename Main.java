@@ -74,6 +74,55 @@ public class Main {
             System.out.println("Por favor, escolha uma opção:");
             int opcao = painel.nextInt();
             painel.nextLine();
+
+            switch (opcao){
+                case 1:
+                    System.out.println("\nPacientes cadastrados:");
+                    for(Pacientes p : pacientes){
+                        System.out.println(p);
+                    }
+                    break;
+                case 2:
+                    System.out.println("Médicos cadastrados:");
+                    for (Medicos m : medicos){
+                        System.out.println(m);
+                    }
+                    break;
+                case 3:
+                    System.out.println("Nome do Paciente:");
+                    String nomePaciente = painel.nextLine();
+                    Pacientes pacienteEscolhido = buscarPaciente(pacientes, nomePaciente);
+                    if (pacienteEscolhido == null){
+                        System.out.println("Paciente não encontrado no sistema!");
+                        break;
+                    }
+                    System.out.print("Nome do Médico: ");
+                    String nomeMedico = painel.nextLine();
+                    Medicos medicoEscolhido = buscarMedico(medicos, nomeMedico);
+                    if(medicoEscolhido == null){
+                        System.out.println("Médico não encontrado no sistema!");
+                        break;
+                    }
+                    System.out.print("Descrição da consulta:");
+                    String desc = painel.nextLine();
+                    System.out.print("Horário (ex: Segunda 10h):");
+                    String horario = painel.nextLine();
+                    //agendarConsulta(medicoEscolhido, pacienteEscolhido, desc, horario);//
+                    break;
+                case 4:
+                    System.out.print("Nome do Paciente:");
+                    String nomeHistorico = painel.nextLine();
+                    Pacientes pHistorico = buscarPaciente(pacientes, nomeHistorico);
+                    if(pHistorico == null){
+                        System.out.println("paciente não encontrado no sistema!");
+                        break;
+                    }
+                    System.out.println("Histórico de " + pHistorico.getNome() + ":");
+                    for (Consulta c : pHistorico.getConsultas()){
+                        System.out.println(c);
+                    }
+                    break;
+            }
         }
 
 
