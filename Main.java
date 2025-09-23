@@ -122,7 +122,35 @@ public class Main {
                         System.out.println(c);
                     }
                     break;
+                case 5:
+                    System.out.println("Nome do paciente para internação:");
+                    String nomeInt = painel.nextLine();
+                    Pacientes pInt = buscarPaciente(pacientes, nomeInt);
+                    if(pInt == null){
+                        System.out.println("Paciente não encontrado no sistema!");
+                        break;
+                    }
+                    System.out.println("Nome do médico responsável:");
+                    String nomeMed = painel.nextLine();
+                    Medicos mResp = buscarMedico(medicos, nomeMed);
+                    if(mResp == null){
+                        System.out.println("Médico não encontrado no sistema!");
+                        break;
+                    }
+                    System.out.println("Digite a data da entrada, por favor!");
+                    String dataEntrada = painel.nextLine();
+                    System.out.println("Quarto: ");
+                    String quarto = painel.nextLine();
+                    System.out.println("Custo: ");
+                    double custo = painel.nextDouble();
+                    painel.nextLine();
+
+                    Internacao internacao = new Internacao(pInt, mResp, dataEntrada, quarto, custo);
+                    internacao.add(internacao);
+                    System.out.println("Internação registrada com sucesso: " + internacao);
+                    break;
             }
+
         }
 
 
