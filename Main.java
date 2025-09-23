@@ -149,6 +149,19 @@ public class Main {
                     internacao.add(internacao);
                     System.out.println("Internação registrada com sucesso: " + internacao);
                     break;
+                case 6:
+                    System.out.print("Quarto sa internação a liberar: ");
+                    String quartoLiberar = painel.nextLine();
+                    Internacao intLiberar = buscarInternacao(internacoes, quartoLiberar);
+                    if(intLiberar != null && intLiberar.isAtiva()){
+                        System.out.println("Digite a data de baixa, por favor: ");
+                        String dataSaida = painel.nextLine();
+                        intLiberar.liberarInternacao(dataSaida);
+                        System.out.println("Baixa registrada: " + intLiberar);
+                    }else {
+                        System.out.println("Internação não liberada ou baixa registrada!");
+                    }
+                    break;
             }
 
         }
