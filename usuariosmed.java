@@ -1,7 +1,7 @@
 public interface usuariosmed {
-    String getnome();
-    String getcrm();
+    String getNome();
+    String getCrm();
     String getEspecialidade();
-    double getcustoDaconsulta();
-    String[] gethistoricoDehorario();
+    double getCustoDaConsulta();
+    String[] getHistoricoDeHorario();
 }
