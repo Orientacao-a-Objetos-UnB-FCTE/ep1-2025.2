@@ -4,13 +4,13 @@ import java.util.List;
 public class Pacientes implements usuariospac {
     private String nome;
     private String cpf;
-    private byte idade;
+    private int idade;
     private String id;
     private List<String> historicoInternacoes;
     private List<String> historicoConsultas;
     private List<Consulta> consultas;
 
-    public Pacientes(String Nome, String Cpf, byte Idade, String Id){
+    public Pacientes(String nome, String cpf, int idade, String id){
         this.nome = nome;
         this.cpf = cpf;
         this.idade = idade;
@@ -25,7 +25,7 @@ public class Pacientes implements usuariospac {
         return nome;
     }
     @Override
-    public byte getIdade() {
+    public int getIdade() {
         return idade;
     }
     @Override
@@ -33,7 +33,7 @@ public class Pacientes implements usuariospac {
         return id;
     }
     @Override
-    public String getCPF() {
+    public String getCpf() {
         return cpf;
     }
     @Override
@@ -46,7 +46,7 @@ public class Pacientes implements usuariospac {
     }
     public void adicionarConsulta(Consulta consulta){
         consultas.add(consulta);
-        historicoConsultas.add("Consulta com" + consulta.getMedicos().getnome() + "em" + consulta.getDatahorario());
+        historicoConsultas.add("Consulta com" + consulta.getMedicos().getNome() + "em" + consulta.getDatahorario());
     }
     public List<Consulta> getConsultas() {
         return consultas;

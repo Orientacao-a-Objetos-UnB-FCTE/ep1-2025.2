@@ -37,6 +37,6 @@ public class Consulta {
         return status;
     }
     public String toString(){
-        return "/Consulta com: " + medicos.getnome() + "Paciente-->" + paciente.getNome() + "às" + datahorario + "para" + descricao + "/" + "que está" + status;
+        return "/Consulta com: " + medicos.getNome() + "Paciente-->" + paciente.getNome() + "às" + datahorario + "para" + descricao + "/" + "que está" + status;
     }
 }

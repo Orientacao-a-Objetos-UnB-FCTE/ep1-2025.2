@@ -1,6 +1,6 @@
 public interface usuariospac {
     String getNome();
-    byte getIdade();
+    int getIdade();
     String getId();
     String getCpf();
     String[] getHistoricoInternacoes();

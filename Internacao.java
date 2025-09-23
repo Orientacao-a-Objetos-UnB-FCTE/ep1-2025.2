@@ -22,6 +22,23 @@ public class Internacao {
     public boolean isAtiva(){
         return ativa;
     }
+
+    public double getCusto() {
+        return custo;
+    }
+
+    public String getDataEntrada() {
+        return dataEntrada;
+    }
+
+    public Medicos getMedicoResponsavel() {
+        return medicoResponsavel;
+    }
+
+    public String getDataBaixa() {
+        return dataBaixa;
+    }
+
     public String toString(){
         return "Situação da internação do paciente:" + pacientes.getNome() + "no quarto:" + quarto + "Ativa:" + ativa;}
 }

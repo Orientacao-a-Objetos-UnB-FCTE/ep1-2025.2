@@ -19,11 +19,11 @@ public class Medicos implements usuariosmed {
 
     }
     @Override
-    public String getnome() {
+    public String getNome() {
         return nome;
     }
     @Override
-    public String getcrm() {
+    public String getCrm() {
         return crm;
     }
     @Override
@@ -31,12 +31,12 @@ public class Medicos implements usuariosmed {
         return Especialidade;
     }
     @Override
-    public double getcustoDaconsulta() {
+    public double getCustoDaConsulta() {
         return custoDaconsulta;
     }
 
     @Override
-    public String[] gethistoricoDehorario() {
+    public String[] getHistoricoDeHorario() {
         return agenda.toArray(new String[0]);
     }
     public Set<String> getAgendaDeConsulta(){
