@@ -14,8 +14,6 @@ public class Consulta {
         this.descricao = descricao;
         this.dataHorario = dataHorario;
         this.status = StatusConsulta.AGENDADA;
-        this.paciente.adicionarConsulta(this);
-        this.medico.adicionarConsulta(this);
     }
     public Pacientes getPacientes() {
         return paciente;

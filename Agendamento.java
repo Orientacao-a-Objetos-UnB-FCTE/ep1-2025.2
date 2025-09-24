@@ -5,9 +5,10 @@ public class Agendamento {
             return false;
         }
         Consulta consulta = new Consulta(medicos, pacientes, descricao, horario);
+        medicos.adicionarHorario(horario);
         pacientes.adicionarConsulta(consulta);
         medicos.adicionarConsulta(consulta);
-        System.out.println("Tudo certo, consulta marcada!");
+        System.out.println("Tudo certo, consulta marcada, senhor(a): " + pacientes.getNome() + " com " + medicos.getNome() + " em " + horario);
             return true;
     }
 }

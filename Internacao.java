@@ -1,5 +1,5 @@
 public class Internacao {
-    private Pacientes pacientes;
+    private Pacientes paciente;
     private Medicos medicoResponsavel;
     private String dataEntrada;
     private String dataBaixa;
@@ -7,17 +7,19 @@ public class Internacao {
     private double custo;
     private boolean ativa;
 
-    public Internacao(Pacientes pacientes, Medicos medicoResponsavel, String dataEntrada, String quarto, double custo){
-        this.pacientes = pacientes;
+    public Internacao(Pacientes paciente, Medicos medicoResponsavel, String dataEntrada, String quarto, double custo){
+        this.paciente = paciente;
         this.medicoResponsavel = medicoResponsavel;
         this.dataEntrada = dataEntrada;
         this.quarto =quarto;
         this.custo = custo;
         this.ativa =true;
+        paciente.adicionarInternacao("Internação iniciada no dia " + dataEntrada + " no quarto" + quarto);
     }
     public void liberarInternacao(String dataBaixa){
         this.dataBaixa = dataBaixa;
         this.ativa = false;
+        paciente.adicionarInternacao("Alta em " + dataBaixa + " (quarto " + quarto + ")");
     }
     public boolean isAtiva(){
         return ativa;
@@ -44,8 +46,9 @@ public class Internacao {
     }
 
     public String toString(){
-        return "Situação da internação do paciente:" + pacientes.getNome() + "no quarto:" + quarto + "Ativa:" + ativa;}
-
-    public void add(Internacao internacao) {
+        return "Situação da internação do paciente:" + paciente.getNome() + " no quarto:" + quarto + " no dia: " + dataEntrada +
+                (dataBaixa != null ? "Alta em:" + dataBaixa : " Ainda em Internação") + " Status: " + ativa + " Valor: R$ " + custo;
     }
-}
+
+    }
+
