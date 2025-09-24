@@ -3,19 +3,19 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class Medicos implements usuariosmed {
+public class Medicos implements MedicosInterface {
     private String nome;
     private String crm;
-    private String Especialidade;
-    private double custoDaconsulta;
+    private String especialidade;
+    private double custoConsulta;
     private Set<String> agenda = new HashSet<>();
     private List<Consulta> consultas = new ArrayList<>();
 
-    public Medicos(String nome, String crm, String Especialidade, double custaDaconsulta){
+    public Medicos(String nome, String crm, String especialidade, double custoConsulta){
         this.nome=nome;
         this.crm=crm;
-        this.Especialidade=Especialidade;
-        this.custoDaconsulta=custaDaconsulta;
+        this.especialidade=especialidade;
+        this.custoConsulta =custoConsulta;
 
     }
     @Override
@@ -28,24 +28,26 @@ public class Medicos implements usuariosmed {
     }
     @Override
     public String getEspecialidade() {
-        return Especialidade;
+        return especialidade;
     }
     @Override
-    public double getCustoDaConsulta() {
-        return custoDaconsulta;
-    }
-
-    @Override
-    public String[] getHistoricoDeHorario() {
-        return agenda.toArray(new String[0]);
+    public double getCustoConsulta() {
+        return custoConsulta;
     }
 
     @Override
-    public void adicionarConsulta(Consulta consulta) {
+    public List<String> getHistoricoHorario() {
+        return new ArrayList<>(agenda);
+    }
+
+    @Override
+    public void adicionarConsulta(Consulta consulta){
+        consultas.add(consulta);
+        agenda.add(consulta.getDataHorario());
 
     }
 
-    public Set<String> getAgendaDeConsulta(){
+    public Set<String> getAgendaConsulta(){
         return agenda;
     }
     public List<Consulta> getConsultas() {
@@ -58,7 +60,7 @@ public class Medicos implements usuariosmed {
         agenda.add(horario);
     }
     public String toString(){
-        return "Doutor(a):" + nome + "CRM:" + crm + "Especialidade:" + Especialidade + "Valor da consulta:" + custoDaconsulta;
+        return "Doutor(a):" + nome + " |CRM: " + crm + " |Especialidade: " + especialidade + "|Valor da consulta: " + custoConsulta;
     }
 
 }

@@ -26,36 +26,36 @@ public class Main {
          pacientes.add(p0); pacientes.add(p1); pacientes.add(p2); pacientes.add(p3); pacientes.add(p4); pacientes.add(p5);
          pacientes.add(p6); pacientes.add(p7); pacientes.add(p8); pacientes.add(p9); pacientes.add(p10); pacientes.add(p11);
 
-        Medicos m0 = new Medicos("Dra. Jill Valentine", "DF001", "Clínico-Geral", 250.00);
+        Medicos m0 = new Medicos("Jill Valentine", "DF001", "Clínico-Geral", 250.00);
         medicos.add(m0);
         m0.adicionarHorario("Segunda ás 10:00"); m0.adicionarHorario("Segunda ás 15:00"); m0.adicionarHorario("Quarta ás 9:00");
         m0.adicionarHorario("Quinta ás 16:00");
 
-        Medicos m1 = new Medicos("Dr. Joel Miller", "DF002", "Pediatra", 150.00);
+        Medicos m1 = new Medicos("Joel Miller", "DF002", "Pediatra", 150.00);
         medicos.add(m1);
         m1.adicionarHorario("Terça ás 8:00"); m1.adicionarHorario("Terça ás 13:00"); m1.adicionarHorario("Quinta ás 10:00");
         m1.adicionarHorario("Quinta ás 16:15"); m1.adicionarHorario("Sexta ás 12:00");
 
-        Medicos m2 = new Medicos("Dr. Nathan Drake", "DF003", "Cardiologista", 80.00);
+        Medicos m2 = new Medicos("Nathan Drake", "DF003", "Cardiologista", 80.00);
         medicos.add(m2);
         m2.adicionarHorario("Quarta ás 8:00");m2.adicionarHorario("Quarta ás 10:30");m2.adicionarHorario("Quarta ás 11:40");
         m2.adicionarHorario("Sexta ás 9:30:00");m2.adicionarHorario("Sexta ás 14:20");m2.adicionarHorario("Sexta ás 16:00");
 
-        Medicos m3 = new Medicos("Dra. Lara Croft", "DF004", "Pneumologista", 125.00);
+        Medicos m3 = new Medicos("Lara Croft", "DF004", "Pneumologista", 125.00);
         medicos.add(m3);
         m3.adicionarHorario("Segunda ás 13:10");m3.adicionarHorario("Quarta ás 12:50");m3.adicionarHorario("Sábado ás 10:30");
 
-        Medicos m4 = new Medicos("Dr. Geralt de Rívia", "DF005", "Infectologista", 110.00);
+        Medicos m4 = new Medicos("Geralt de Rívia", "DF005", "Infectologista", 110.00);
         medicos.add(m4);
         m4.adicionarHorario("Sábado ás 8:20");m4.adicionarHorario("Terça ás 10:00");m4.adicionarHorario("Quinta ás 11:45");
         m4.adicionarHorario("Quinta ás 9:00");
 
-        Medicos m5 = new Medicos("Dr. Gordon Freeman", "DF006", "Geriatra", 115.00);
+        Medicos m5 = new Medicos("Gordon Freeman", "DF006", "Geriatra", 115.00);
         medicos.add(m5);
         m5.adicionarHorario("Segunda ás 14:30");m5.adicionarHorario("Segunda ás 16:15");
 
 
-        Medicos m6 = new Medicos("Dr. James Sunderland", "DF007", "Psiquiatra", 100.00);
+        Medicos m6 = new Medicos("James Sunderland", "DF007", "Psiquiatra", 100.00);
         medicos.add(m6);
         m6.adicionarHorario("Sábado ás 10:00");m6.adicionarHorario("Sábado ás 11:30");m6.adicionarHorario("Sábado ás 8:25");
 

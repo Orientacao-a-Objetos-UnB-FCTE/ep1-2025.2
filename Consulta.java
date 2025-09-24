@@ -6,13 +6,13 @@ public class Consulta {
     private Medicos medicos;
     private Pacientes paciente;
     private String descricao;
-    private String datahorario;
+    private String dataHorario;
     private StatusConsulta status;
-    public Consulta( Medicos medicos, Pacientes paciente, String descricao, String datahorario){
+    public Consulta( Medicos medicos, Pacientes paciente, String descricao, String dataHorario){
         this.paciente = paciente;
         this.medicos = medicos;
         this.descricao = descricao;
-        this.datahorario = datahorario;
+        this.dataHorario = dataHorario;
         this.status = StatusConsulta.AGENDADA;
     }
     public Pacientes getPacientes() {
@@ -24,8 +24,8 @@ public class Consulta {
     public String getDescricao() {
         return descricao;
     }
-    public String getDatahorario() {
-        return datahorario;
+    public String getDataHorario() {
+        return dataHorario;
     }
     public void concluirConsulta(){
         status = StatusConsulta.CONCLUIDA;
@@ -37,6 +37,6 @@ public class Consulta {
         return status;
     }
     public String toString(){
-        return "/Consulta com: " + medicos.getNome() + "Paciente-->" + paciente.getNome() + "às" + datahorario + "para" + descricao + "/" + "que está" + status;
+        return "/Consulta com: " + medicos.getNome() + "Paciente-->" + paciente.getNome() + "às" + dataHorario + "para" + descricao + "/" + "que está" + status;
     }
 }

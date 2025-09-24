@@ -46,7 +46,7 @@ public class Pacientes implements PacienteInterface {
     }
     public void adicionarConsulta(Consulta consulta){
         consultas.add(consulta);
-        historicoConsultas.add("Consulta com " + consulta.getMedicos().getNome() + " no dia " + consulta.getDatahorario());
+        historicoConsultas.add("Consulta com " + consulta.getMedicos().getNome() + " no dia " + consulta.getDataHorario());
     }
     public List<Consulta> getConsultas() {
         return consultas;
