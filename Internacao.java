@@ -31,6 +31,10 @@ public class Internacao {
         return dataEntrada;
     }
 
+    public String getQuarto() {
+        return quarto;
+    }
+
     public Medicos getMedicoResponsavel() {
         return medicoResponsavel;
     }
@@ -41,4 +45,7 @@ public class Internacao {
 
     public String toString(){
         return "Situação da internação do paciente:" + pacientes.getNome() + "no quarto:" + quarto + "Ativa:" + ativa;}
+
+    public void add(Internacao internacao) {
+    }
 }

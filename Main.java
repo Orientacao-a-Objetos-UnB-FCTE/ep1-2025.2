@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ListIterator;
 import java.util.Scanner;
 
 public class Main {
@@ -62,6 +61,7 @@ public class Main {
 
         boolean sair = false;
 
+
         while (!sair){
             System.out.println("\n---Hospital Clair Obscur---");
             System.out.println("1 - Lista de Pacientes");
@@ -107,7 +107,7 @@ public class Main {
                     String desc = painel.nextLine();
                     System.out.print("Horário (ex: Segunda 10h):");
                     String horario = painel.nextLine();
-                    //agendarConsulta(medicoEscolhido, pacienteEscolhido, desc, horario);//
+                    agendarConsulta(medicoEscolhido, pacienteEscolhido, desc, horario);
                     break;
                 case 4:
                     System.out.print("Nome do Paciente:");
@@ -162,11 +162,50 @@ public class Main {
                         System.out.println("Internação não liberada ou baixa registrada!");
                     }
                     break;
+                case 0:
+                    sair = true;
+                    System.out.println("Saindo");
+                    break;
+                default:
+                    System.out.println("Opção inválida");
             }
 
         }
+        painel.close();
 
 
+
+    }
+    public static Pacientes buscarPaciente(List<Pacientes> pacientes, String nome){
+        for(Pacientes p : pacientes){
+            if (p.getNome().equalsIgnoreCase(nome)){
+                return p;
+            }
+        }return null;
+    }
+    public static Medicos buscarMedico(List<Medicos> medicos, String nome){
+        for(Medicos m : medicos){
+            if(m.getNome().equalsIgnoreCase(nome)){
+                return m;
+            }
+        }return null;
+    }
+    public static Internacao buscarInternacao(List<Internacao> internacoes, String quarto){
+        for(Internacao i : internacoes){
+            if(i.getQuarto().equalsIgnoreCase(quarto) && i.isAtiva()){
+                return i;
+            }
+        }return null;
+    }
+    public static void agendarConsulta(Medicos medicos, Pacientes pacientes, String descricao, String horario){
+        if (!medicos.simDisponivel(horario)){
+            System.out.println("Erro: Médico " + medicos.getNome() + "Não está disponível neste horário: " + horario);
+        }
+        Consulta consulta = new Consulta(medicos, pacientes, descricao, horario);
+        pacientes.adicionarConsulta(consulta);
+        medicos.adicionarConsulta(consulta);
+
+        System.out.println("Consulta agendada: " + consulta + "Tenha um bom dia!");
     }
 
 }

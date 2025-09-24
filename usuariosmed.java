@@ -4,4 +4,5 @@ public interface usuariosmed {
     String getEspecialidade();
     double getCustoDaConsulta();
     String[] getHistoricoDeHorario();
+    void adicionarConsulta(Consulta consulta);
 }

@@ -39,6 +39,12 @@ public class Medicos implements usuariosmed {
     public String[] getHistoricoDeHorario() {
         return agenda.toArray(new String[0]);
     }
+
+    @Override
+    public void adicionarConsulta(Consulta consulta) {
+
+    }
+
     public Set<String> getAgendaDeConsulta(){
         return agenda;
     }
