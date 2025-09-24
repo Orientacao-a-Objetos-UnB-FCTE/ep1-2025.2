@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Pacientes implements usuariospac {
+public class Pacientes implements PacienteInterface {
     private String nome;
     private String cpf;
     private int idade;
@@ -37,16 +37,16 @@ public class Pacientes implements usuariospac {
         return cpf;
     }
     @Override
-    public String[] getHistoricoInternacoes() {
-        return historicoInternacoes.toArray(new String[0]);
+    public List<String> getHistoricoInternacoes() {
+        return historicoInternacoes;
     }
     @Override
-    public String[] getHistoricoConsultas() {
-        return historicoConsultas.toArray(new String[0]);
+    public List<String> getHistoricoConsultas() {
+        return historicoConsultas;
     }
     public void adicionarConsulta(Consulta consulta){
         consultas.add(consulta);
-        historicoConsultas.add("Consulta com" + consulta.getMedicos().getNome() + "em" + consulta.getDatahorario());
+        historicoConsultas.add("Consulta com " + consulta.getMedicos().getNome() + " no dia " + consulta.getDatahorario());
     }
     public List<Consulta> getConsultas() {
         return consultas;
@@ -55,7 +55,7 @@ public class Pacientes implements usuariospac {
         historicoInternacoes.add(internacao);
     }
     public String toString(){
-        return "/Paciente:"+ nome + "CPF:" + cpf + "Idade:" + idade + "Identificação:" + id +"/";
+        return " Paciente: "+  nome  + " |CPF: " +  cpf  + " |Idade: " +  idade  + " |Identificação: " +  id;
     }
 
 }
