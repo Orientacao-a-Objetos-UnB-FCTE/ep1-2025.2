@@ -1,8 +1,10 @@
+package br.com.lucasferreira.sh;
+import br.com.lucasferreira.sh.enums.TipoPlano;
 import java.time.LocalDate;
 import java.time.Period;
 
 public class Paciente {
-    private String cpf;
+    private final String cpf;
     private TipoPlano plano;
     private boolean pcd;
     private LocalDate dataNascimento; // usar LocalDate para idade nao desatualizar
@@ -13,12 +15,6 @@ public class Paciente {
         this.plano = plano;
         this.pcd = pcd;
         this.dataNascimento = dataNascimento;
-    }
-    public enum TipoPlano {
-        BASICO,
-        INTERMEDIARIO,
-        ESPECIAL,
-        PREMIUM;
     }
     public TipoPlano getPlano(){
         return plano;
