@@ -1,4 +1,5 @@
-
+import java.util.ArrayList;
+import java.util.List;
 
 public class Consulta {
     public enum StatusConsulta{
@@ -14,6 +15,7 @@ public class Consulta {
         this.descricao = descricao;
         this.dataHorario = dataHorario;
         this.status = StatusConsulta.AGENDADA;
+
     }
     public Pacientes getPacientes() {
         return paciente;

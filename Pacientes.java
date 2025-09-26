@@ -9,6 +9,7 @@ public class Pacientes implements PacienteInterface {
     private List<String> historicoInternacoes;
     private List<String> historicoConsultas;
     private List<Consulta> consultas;
+    private List<Exame> exames;
 
     public Pacientes(String nome, String cpf, int idade, String id){
         this.nome = nome;
@@ -18,6 +19,7 @@ public class Pacientes implements PacienteInterface {
         this.historicoConsultas = new ArrayList<>();
         this.historicoInternacoes = new ArrayList<>();
         this.consultas = new ArrayList<>();
+        this.exames = new ArrayList<>();
 
     }
     @Override
@@ -54,6 +56,15 @@ public class Pacientes implements PacienteInterface {
     public void adicionarInternacao(String internacao){
         historicoInternacoes.add(internacao);
     }
+
+    public void adicionarExame(Exame exame) {
+        exames.add(exame);
+        historicoConsultas.add("Exame de " + exame.getTipo() + " em " + exame.getDataHorario());
+    }
+    public List<Exame> getExames() {
+        return exames;
+    }
+
     public String toString(){
         return " Paciente: "+  nome  + " |CPF: " +  cpf  + " |Idade: " +  idade  + " |Identificação: " +  id;
     }
