@@ -4,13 +4,15 @@ import java.time.LocalDate;
 import java.time.Period;
 
 public class Paciente {
+    private final String nome;
     private final String cpf;
     private TipoPlano plano;
     private boolean pcd;
-    private LocalDate dataNascimento; // usar LocalDate para idade nao desatualizar
+    private final LocalDate dataNascimento; // usar LocalDate para idade nao desatualizar
 
 
-    public Paciente(String cpf, TipoPlano plano, boolean pcd, LocalDate dataNascimento){
+    public Paciente(String nome, String cpf, TipoPlano plano, boolean pcd, LocalDate dataNascimento){
+        this.nome = nome;
         this.cpf = cpf;
         this.plano = plano;
         this.pcd = pcd;
@@ -18,6 +20,9 @@ public class Paciente {
     }
     public TipoPlano getPlano(){
         return plano;
+    }
+    public String getNome(){
+        return nome;
     }
     public int getIdade(){
         return Period.between(this.dataNascimento,LocalDate.now()).getYears();
