@@ -63,13 +63,14 @@ public class Main {
 
 
         while (!sair){
-            System.out.println("\n---Hospital Clair Obscur---");
+            System.out.println("\n|-Bem vindo-| \n---|HOSPITAL THE FIRST OF US|---");
             System.out.println("1 - Lista de Pacientes");
             System.out.println("2 - Lista de Médicos");
-            System.out.println("3 - Agendar Consulta");
-            System.out.println("4 - Mostrar histórico de paciente");
-            System.out.println("5 - Registrar internação");
-            System.out.println("6 - Liberar Internação");
+            System.out.println("3 - Cadastrar novo Paciente");
+            System.out.println("4 - Agendar Consulta");
+            System.out.println("5 - Mostrar histórico de paciente");
+            System.out.println("6 - Registrar internação");
+            System.out.println("7 - Liberar Internação");
             System.out.println("0 - Sair");
             System.out.println("Por favor, escolha uma opção:");
             int opcao = painel.nextInt();
@@ -77,7 +78,7 @@ public class Main {
 
             switch (opcao){
                 case 1:
-                    System.out.println("\nPacientes cadastrados:");
+                    System.out.println("     \nPacientes cadastrados:");
                     for(Pacientes p : pacientes){
                         System.out.println(p);
                     }
@@ -89,38 +90,50 @@ public class Main {
                     }
                     break;
                 case 3:
-                    System.out.println("Nome do Paciente:");
+                    System.out.print("Nome do Paciente: ");
+                    String nomeNovo = painel.nextLine();
+                    System.out.print("CPF do Paciente: ");
+                    String cpfNovo = painel.nextLine();
+                    System.out.print("Idade do Paciente: ");
+                    int idadeNova= painel.nextInt();
+                    painel.nextLine();
+                    System.out.print("ID do Paciente: ");
+                    String idNovo = painel.nextLine();;
+                    Pacientes novoPaciente = new Pacientes(nomeNovo, cpfNovo, idadeNova, idNovo);
+                    pacientes.add(novoPaciente);
+                    System.out.println("Paciente cadastrado com sucesso!");
+                    break;
+                case 4:
+                    System.out.print("Nome do Paciente:");
                     String nomePaciente = painel.nextLine();
                     Pacientes pacienteEscolhido = buscarPaciente(pacientes, nomePaciente);
-                    if (pacienteEscolhido == null){
-                        System.out.println("Paciente não encontrado no sistema!");
+                    if(pacienteEscolhido == null){
+                        System.out.println("paciente não encontrado no sistema!");
                         break;
                     }
                     System.out.print("Nome do Médico: ");
                     String nomeMedico = painel.nextLine();
-                    Medicos medicoEscolhido = buscarMedico(medicos, nomeMedico);
-                    if(medicoEscolhido == null){
+                    Medicos medicoEscolhido = buscarMedico(medicos, nomeMedico):
+                    if (medicoEscolhido == null){
                         System.out.println("Médico não encontrado no sistema!");
                         break;
                     }
-                    System.out.print("Descrição da consulta:");
+                    System.out.println("Horários disponíveis para " + medicoEscolhido.getNome() +":");
+                    for (String h : medicoEscolhido.getHorariosDisponiveis()){
+                        System.out.println(("- " + h));
+                    System.out.print("Descrição da consulta: ");
                     String desc = painel.nextLine();
-                    System.out.print("Horário (ex: Segunda 10h):");
+                    System.out.print("Hórario");
+                    }
+                    System.out.println("Escolha um dos horários acima: ");
                     String horario = painel.nextLine();
-                    agendarConsulta(medicoEscolhido, pacienteEscolhido, desc, horario);
-                    break;
-                case 4:
-                    System.out.print("Nome do Paciente:");
-                    String nomeHistorico = painel.nextLine();
-                    Pacientes pHistorico = buscarPaciente(pacientes, nomeHistorico);
-                    if(pHistorico == null){
-                        System.out.println("paciente não encontrado no sistema!");
+                    if (!medicoEscolhido.simDisponivel(horario)){
+                        System.out.println("Esse horário não está disponível! POr favor Escolha um horário válido");
                         break;
                     }
-                    System.out.println("Histórico de " + pHistorico.getNome() + ":");
-                    for (Consulta c : pHistorico.getConsultas()){
-                        System.out.println(c);
-                    }
+                    System.out.println("Descrição da Consulta: ");
+                    String desc = painel.nextLine();
+                    agendarConsulta(medicoEscolhido, pacienteEscolhido, desc, horario);
                     break;
                 case 5:
                     System.out.println("Nome do paciente para internação:");
