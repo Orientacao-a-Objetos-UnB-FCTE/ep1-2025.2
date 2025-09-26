@@ -113,7 +113,7 @@ public class Main {
                     }
                     System.out.print("Nome do Médico: ");
                     String nomeMedico = painel.nextLine();
-                    Medicos medicoEscolhido = buscarMedico(medicos, nomeMedico):
+                    Medicos medicoEscolhido = buscarMedico(medicos, nomeMedico);
                     if (medicoEscolhido == null){
                         System.out.println("Médico não encontrado no sistema!");
                         break;
@@ -121,9 +121,6 @@ public class Main {
                     System.out.println("Horários disponíveis para " + medicoEscolhido.getNome() +":");
                     for (String h : medicoEscolhido.getHorariosDisponiveis()){
                         System.out.println(("- " + h));
-                    System.out.print("Descrição da consulta: ");
-                    String desc = painel.nextLine();
-                    System.out.print("Hórario");
                     }
                     System.out.println("Escolha um dos horários acima: ");
                     String horario = painel.nextLine();
@@ -136,6 +133,19 @@ public class Main {
                     agendarConsulta(medicoEscolhido, pacienteEscolhido, desc, horario);
                     break;
                 case 5:
+                    System.out.print("Nome do paciente: ");
+                    String nomeHistorico = painel.nextLine();
+                    Pacientes pHistorico = buscarPaciente(pacientes, nomeHistorico);
+                    if (pHistorico == null){
+                        System.out.println("Paciente não encontrado no sistema!");
+                        break;
+                    }
+                    System.out.println("Histórico de " + pHistorico.getNome() + ":");
+                    for (Consulta c : pHistorico.getConsultas()){
+                        System.out.println(c);
+                    }
+                    break;
+                case 6:
                     System.out.println("Nome do paciente para internação:");
                     String nomeInt = painel.nextLine();
                     Pacientes pInt = buscarPaciente(pacientes, nomeInt);
@@ -157,22 +167,36 @@ public class Main {
                     System.out.println("Custo: ");
                     double custo = painel.nextDouble();
                     painel.nextLine();
-
                     Internacao internacao = new Internacao(pInt, mResp, dataEntrada, quarto, custo);
-                    internacao.add(internacao);
+                    internacoes.add(internacao);
                     System.out.println("Internação registrada com sucesso: " + internacao);
                     break;
-                case 6:
-                    System.out.print("Quarto sa internação a liberar: ");
+                case 7:
+                    System.out.println("\nInternações ativas no sistema:");
+                    boolean temAtiva = false;
+                    for (Internacao i : internacoes) {
+                        if (i.isAtiva()) {
+                            System.out.println("Paciente: " + i.getMedicoResponsavel().getNome() +
+                                    " | Quarto: " + i.getQuarto() +
+                                    " | Data entrada: " + i.getDataEntrada());
+                            temAtiva = true;
+                        }
+                    }
+                    if (!temAtiva) {
+                        System.out.println("Não há internações ativas para liberar.");
+                        break;
+                    }
+                    System.out.print("\nDigite o número do quarto da internação a liberar: ");
                     String quartoLiberar = painel.nextLine();
                     Internacao intLiberar = buscarInternacao(internacoes, quartoLiberar);
-                    if(intLiberar != null && intLiberar.isAtiva()){
-                        System.out.println("Digite a data de baixa, por favor: ");
+
+                    if (intLiberar != null && intLiberar.isAtiva()) {
+                        System.out.print("Digite a data de baixa: ");
                         String dataSaida = painel.nextLine();
                         intLiberar.liberarInternacao(dataSaida);
                         System.out.println("Baixa registrada: " + intLiberar);
-                    }else {
-                        System.out.println("Internação não liberada ou baixa registrada!");
+                    } else {
+                        System.out.println("Internação não encontrada ou já liberada!");
                     }
                     break;
                 case 0:
@@ -211,10 +235,12 @@ public class Main {
     public static void agendarConsulta(Medicos medicos, Pacientes pacientes, String descricao, String horario){
         if (!medicos.simDisponivel(horario)){
             System.out.println("Erro: Médico " + medicos.getNome() + "Não está disponível neste horário: " + horario);
+            return;
         }
         Consulta consulta = new Consulta(medicos, pacientes, descricao, horario);
         pacientes.adicionarConsulta(consulta);
         medicos.adicionarConsulta(consulta);
+        medicos.getHorariosDisponiveis().remove(horario);
 
         System.out.println("Consulta agendada: " + consulta + "Tenha um bom dia!");
     }

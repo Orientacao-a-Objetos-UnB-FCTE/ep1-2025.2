@@ -9,7 +9,7 @@ public class GerenciarInternacao {
             }
         }
         Internacao internacao = new Internacao(paciente, medicoResponsavel, dataEntrada, quarto, custo);
-        internacao.add(internacao);
+        internacoes.add(internacao);
 
         System.out.println("Internação registrada com sucesso para: " + paciente.getNome() + "no quarto" + quarto + ".");
         return true;

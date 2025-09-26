@@ -46,8 +46,7 @@ public class Internacao {
     }
 
     public String toString(){
-        return "Situação da internação do paciente:" + paciente.getNome() + " no quarto:" + quarto + " no dia: " + dataEntrada +
-                (dataBaixa != null ? "Alta em:" + dataBaixa : " Ainda em Internação") + " Status: " + ativa + " Valor: R$ " + custo;
+        return "Situação da internação do paciente:" + paciente.getNome() + " no quarto:" + quarto + " no dia: " + dataEntrada + " Valor: R$ " + custo;
     }
 
     }
