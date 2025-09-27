@@ -2,25 +2,14 @@ package br.com.lucasferreira.sh.Models;
 import java.time.LocalDateTime;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.Month;
+import java.util.Collections;
 import java.util.List;
 import java.util.ArrayList;
 public class Agenda {
     private List<Consulta> consultas;
     public Agenda(){
         this.consultas = new ArrayList<>();
-    }
-    public List<LocalDateTime>getHorarios(LocalDate dia){
-        List<LocalDateTime>horariosDisponiveis = new ArrayList<>();
-        final LocalTime inicioConsultas = LocalTime.of(8,0);
-        final LocalTime fimConsultas = LocalTime.of(18,0);
-        final int duracaoConsultaMinutos = 60;
-        for(LocalTime hora = inicioConsultas; hora.isBefore(fimConsultas.plusMinutes(1));hora = hora.plusMinutes(duracaoConsultaMinutos)){
-            LocalDateTime horario = LocalDateTime.of(dia,hora);
-            if(isHorarioDisponivel(horario)){
-                horariosDisponiveis.add(horario);
-            }
-        }
-        return horariosDisponiveis;
     }
     public void adicionarConsulta(Consulta novaConsulta){
         this.consultas.add(novaConsulta);
@@ -48,5 +37,16 @@ public class Agenda {
         }
 
         }
+        public List<Consulta> getHistorico(){
+            Collections.sort(consultas);
+            return this.consultas;
+        }
     }
+
+
+
+
+
+
+
 

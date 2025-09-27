@@ -1,4 +1,4 @@
-package br.com.lucasferreira.sh;
+package br.com.lucasferreira.sh.Models;
 import br.com.lucasferreira.sh.enums.Especialidade;
 
 public class Medico {
@@ -6,6 +6,7 @@ public class Medico {
     private final String crm;
     private Especialidade especialidade;
     private double custoPorConsulta;
+    private boolean plantao;
     public Medico(String nome, String crm, Especialidade especialidade,double custoPorConsulta){
         this.nome = nome;
         this.crm = crm;

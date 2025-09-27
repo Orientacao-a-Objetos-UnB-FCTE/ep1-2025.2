@@ -1,10 +1,6 @@
 package br.com.lucasferreira.sh.Models;
-import br.com.lucasferreira.sh.Medico;
-import br.com.lucasferreira.sh.Paciente;
-
 import java.time.LocalDateTime;
-
-public class Consulta {
+public class Consulta implements Comparable<Consulta>{
     private Medico medico;
     private Paciente paciente;
     private LocalDateTime dataHora;
@@ -23,5 +19,10 @@ public class Consulta {
 
     public LocalDateTime getDataHora() {
         return dataHora;
+    }
+    @Override
+    public int compareTo(Consulta outra) {
+        // Ordena do mais antigo para o mais recente
+        return this.dataHora.compareTo(outra.dataHora);
     }
 }
