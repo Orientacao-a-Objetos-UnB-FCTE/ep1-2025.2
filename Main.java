@@ -94,9 +94,18 @@ public class Main {
                     String cpfNovo = Excecao.lerCpf("CPF do Paciente: ");
                     int idadeNova= Excecao.lerInteiroPositivo("Idade do Paciente: ");
                     String idNovo = Excecao.lerString("ID do Paciente");
+
                     Pacientes novoPaciente = new Pacientes(nomeNovo, cpfNovo, idadeNova, idNovo);
                     pacientes.add(novoPaciente);
-                    System.out.println("Paciente cadastrado com sucesso!");
+                    System.out.println("Paciente cadastrado com sucesso!" + nomeNovo+ "!");
+
+                    boolean voltarDoSubMenu = false;
+                    while (!voltarDoSubMenu){
+                        System.out.println("1 - Agendar Consulta");
+                        System.out.println("2 - Agendar Exame");
+                        System.out.println("0 - Voltar ao Menu Principal");
+                        int subOpcao = Excecao.lerOpcaoMenu("Escolha uma opção: ");
+                    }
                     break;
                 case 4:
                     String nomePaciente = Excecao.lerString("Nome do Paciente: ");
