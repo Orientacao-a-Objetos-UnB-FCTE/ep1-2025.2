@@ -1,6 +1,12 @@
 import java.util.Scanner;
 public class Excecao {
     private static final Scanner sc = new Scanner(System.in);
+    public static void closeScanner(){
+        if (sc != null){
+            sc.close();
+            System.out.println("Muito obrigado, volte sempre (mas melhor não) ao Hospital");
+        }
+    }
         public static int lerOpcaoMenu(String mensagem) {
             while (true) {
                 try {
@@ -27,7 +33,6 @@ public class Excecao {
                 }
             }
         }
-
         public static int lerInteiroPositivo(String mensagem) {
             while (true) {
                 try {
@@ -39,11 +44,14 @@ public class Excecao {
                         System.out.println("O número deve ser maior que zero!");
                     }
                 } catch (NumberFormatException e) {
-                    System.out.println("Entrada inválida! Digite apenas números inteiros positivos.");
+                    System.out.println("Entrada inválida! Digite apenas números");
                 }
             }
         }
-
+        public static String lerString(String mensagem){
+            System.out.println(mensagem);
+            return sc.nextLine();
+        }
         public static double lerDoublePositivo(String mensagem) {
             while (true) {
                 try {
@@ -55,11 +63,10 @@ public class Excecao {
                         System.out.println("O valor deve ser maior que zero!");
                     }
                 } catch (NumberFormatException e) {
-                    System.out.println("Entrada inválida! Digite apenas números decimais. Exemplo: 1500.50");
+                    System.out.println("Entrada inválida! Digite apenas números decimais. Exemplo: 15.50");
                 }
             }
         }
-
         public static String lerCpf(String mensagem) {
             while (true) {
                 System.out.print(mensagem);
@@ -67,7 +74,7 @@ public class Excecao {
                 if (cpf.matches("\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}")) {
                     return cpf;
                 } else {
-                    System.out.println("⚠️ CPF inválido! Use o formato: 123.456.789-10");
+                    System.out.println("CPF inválido! Use o formato: 123.456.789-10");
                 }
             }
         }
