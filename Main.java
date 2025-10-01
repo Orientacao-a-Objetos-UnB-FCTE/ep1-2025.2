@@ -97,7 +97,7 @@ public class Main {
 
                     Pacientes novoPaciente = new Pacientes(nomeNovo, cpfNovo, idadeNova, idNovo);
                     pacientes.add(novoPaciente);
-                    System.out.println("Paciente cadastrado com sucesso!" + nomeNovo+ "!");
+                    System.out.println("Paciente cadastrado com sucesso!" + nomeNovo + "!");
 
                     boolean voltarDoSubMenu = false;
                     while (!voltarDoSubMenu){
@@ -105,6 +105,49 @@ public class Main {
                         System.out.println("2 - Agendar Exame");
                         System.out.println("0 - Voltar ao Menu Principal");
                         int subOpcao = Excecao.lerOpcaoMenu("Escolha uma opção: ");
+                        switch (subOpcao) {
+                            case 1:
+                                System.out.println("\n ||Agendar Consulta||");
+                                System.out.println("Médicos Disponíveis: ");
+                                for (Medicos m : medicos) {
+                                    System.out.println(m);
+                                }
+                                String nomeMedico = Excecao.lerString("\nNome do Médico: ");
+                                Medicos medicoEscolhido = buscarMedico(medicos, nomeMedico);
+
+                                if (medicoEscolhido == null) {
+                                    System.out.println("Médico não encontrado no sistema!");
+                                    break;
+                                }
+                                System.out.println("Horários disponíveis para " + medicoEscolhido.getNome() + ":");
+                                for (String h : medicoEscolhido.getHorariosDisponiveis()) {
+                                    System.out.println(("- " + h));
+                                }
+                                String horario = Excecao.lerString("Escolha um dos horários acima: ");
+
+                                if (!medicoEscolhido.simDisponivel(horario)) {
+                                    System.out.println("Esse horário não está disponível! Por favor, escolha um horário válido.");
+                                    break;
+                                }
+                                String desc = Excecao.lerString("Descrição da Consulta: ");
+                                agendarConsulta(medicoEscolhido, novoPaciente, desc, horario);
+                                break;
+                            case 2:
+                                System.out.println("\n|| Agendar Exame ||");
+                                String tipoExame = Excecao.lerString("Tipo de Exame: ");
+                                String dataHorarioExame = Excecao.lerString("Data e horário do exame: ");
+
+                                AgendamentoExame.agendarExame(novoPaciente, tipoExame, dataHorarioExame);
+                                System.out.println("Exame agendado para: " + novoPaciente.getNome() + " - " + tipoExame + " em " + dataHorarioExame);
+                                break;
+                            case 0:
+                                voltarDoSubMenu = true;
+                                System.out.println("Voltando ao Menu Principal.");
+                                break;
+                            default:
+                                System.out.println("Opção inválida.");
+                                break;
+                        }
                     }
                     break;
                 case 4:
@@ -132,7 +175,9 @@ public class Main {
                     String desc = Excecao.lerString("Descrição da Consulta: ");
                     agendarConsulta(medicoEscolhido, pacienteEscolhido, desc, horario);
                     break;
-                case 5:
+
+
+                    case 5:
                     String nomeHistorico = Excecao.lerString("Nome do paciente: ");
                     Pacientes pHistorico = buscarPaciente(pacientes, nomeHistorico);
                     if (pHistorico == null){
@@ -219,6 +264,10 @@ public class Main {
 
 
     }
+    private static void agendarAcao(List<Medicos> medicos, Pacientes paciente){
+                System.out.println("Médicos Discponíveis: ");
+                medicos.forEach(System.out::println);
+            }
     public static Pacientes buscarPaciente(List<Pacientes> pacientes, String nome){
         for(Pacientes p : pacientes){
             if (p.getNome().equalsIgnoreCase(nome)){
