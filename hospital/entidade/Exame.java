@@ -1,13 +1,17 @@
+package hospital.entidade;
+
+import java.time.LocalDateTime;
+
 public class Exame {
     public enum StatusExame{
         AGENDADO, REALIZADO, CANCELADO
     }
     private Pacientes paciente;
     private String tipo;
-    private String dataHorario;
+    private LocalDateTime dataHorario;
     private StatusExame status;
 
-    public Exame(Pacientes paciente, String tipo, String dataHorario){
+    public Exame(Pacientes paciente, String tipo, LocalDateTime dataHorario){
         this.paciente = paciente;
         this.tipo = tipo;
         this.dataHorario = dataHorario;
@@ -20,7 +24,7 @@ public class Exame {
     public String getTipo(){
         return tipo;
     }
-    public String getDataHorario() {
+    public LocalDateTime getDataHorario() {
         return dataHorario;
     }
     public StatusExame getStatus(){

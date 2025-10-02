@@ -1,3 +1,5 @@
+package hospital.interfac;
+import hospital.entidade.Consulta;
 import java.util.List;
 
 public interface MedicosInterface {
@@ -5,6 +7,9 @@ public interface MedicosInterface {
     String getCrm();
     String getEspecialidade();
     double getCustoConsulta();
-    List<String> getHistoricoHorario();
+    List<Consulta> getHistoricoHorario();
+
+    List<Consulta> getHistoricoConsultas();
+
     void adicionarConsulta(Consulta consulta);
 }

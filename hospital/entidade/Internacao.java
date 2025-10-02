@@ -1,25 +1,27 @@
+package hospital.entidade;
+
+import java.time.LocalDate;
+
 public class Internacao {
     private Pacientes paciente;
     private Medicos medicoResponsavel;
-    private String dataEntrada;
-    private String dataBaixa;
+    private LocalDate dataEntrada;
+    private LocalDate dataBaixa;
     private String quarto;
     private double custo;
     private boolean ativa;
 
-    public Internacao(Pacientes paciente, Medicos medicoResponsavel, String dataEntrada, String quarto, double custo){
+    public Internacao(Pacientes paciente, Medicos medicoResponsavel, LocalDate dataEntrada, String quarto, double custo){
         this.paciente = paciente;
         this.medicoResponsavel = medicoResponsavel;
         this.dataEntrada = dataEntrada;
         this.quarto =quarto;
         this.custo = custo;
         this.ativa =true;
-        paciente.adicionarInternacao("Internação iniciada no dia " + dataEntrada + " no quarto" + quarto);
     }
-    public void liberarInternacao(String dataBaixa){
+    public void liberarInternacao(LocalDate dataBaixa){
         this.dataBaixa = dataBaixa;
         this.ativa = false;
-        paciente.adicionarInternacao("Alta em " + dataBaixa + " (quarto " + quarto + ")");
     }
     public boolean isAtiva(){
         return ativa;
@@ -29,7 +31,7 @@ public class Internacao {
         return custo;
     }
 
-    public String getDataEntrada() {
+    public LocalDate getDataEntrada() {
         return dataEntrada;
     }
 
@@ -41,12 +43,12 @@ public class Internacao {
         return medicoResponsavel;
     }
 
-    public String getDataBaixa() {
+    public LocalDate getDataBaixa() {
         return dataBaixa;
     }
 
     public String toString(){
-        return "Situação da internação do paciente:" + paciente.getNome() + " no quarto:" + quarto + " no dia: " + dataEntrada + " Valor: R$ " + custo;
+        return "Situação da internação do paciente:" + paciente.getNome() + " no quarto:" + quarto + " no dia: " + dataEntrada + " Valor: R$ " + String.format("%.2f", custo);
     }
 
     }

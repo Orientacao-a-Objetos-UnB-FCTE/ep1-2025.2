@@ -1,6 +1,17 @@
+package hospital.util;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Scanner;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+
+
+
 public class Excecao {
     private static final Scanner sc = new Scanner(System.in);
+    private static DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+    private static DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     public static void closeScanner(){
         if (sc != null){
             sc.close();
@@ -12,7 +23,7 @@ public class Excecao {
                 try {
                     System.out.print(mensagem);
                     int opcao = Integer.parseInt(sc.nextLine());
-                    if (opcao < 0) {
+                    if (opcao >= 0) {
                         System.out.println("Opção inválida. Digite um número válido.");
                     } else {
                         return opcao;
@@ -29,7 +40,7 @@ public class Excecao {
                 if (entrada.matches("^[A-Za-zÀ-ÿ ]+$")) {
                     return entrada;
                 } else {
-                    System.out.println("Digite apenas letras. Exemplo: João da Silva");
+                    System.out.println("Digite apenas letras. Exemplo: Pedro Pedreira");
                 }
             }
         }
@@ -56,7 +67,8 @@ public class Excecao {
             while (true) {
                 try {
                     System.out.print(mensagem);
-                    double valor = Double.parseDouble(sc.nextLine().replace(",", "."));
+                    String input = sc.nextLine().trim().replace(",", ".");
+                    double valor = Double.parseDouble(input);
                     if (valor > 0) {
                         return valor;
                     } else {
@@ -75,6 +87,30 @@ public class Excecao {
                     return cpf;
                 } else {
                     System.out.println("CPF inválido! Use o formato: 123.456.789-10");
+                }
+            }
+        }
+        public static LocalDateTime lerDataHora(String mensagem){
+            while (true) {
+                System.out.print(mensagem + " (Formato: dd/MM/yyyy HH:mm): ");
+                String entrada = sc.nextLine().trim();
+                try {
+                    return LocalDateTime.parse(entrada, DATE_TIME_FORMATTER);
+                }catch (DateTimeParseException e){
+                    System.out.println("Formato de data e hora inválido! Use: dd/MM/yyyy HH:mm ");
+                }
+
+
+            }
+        }
+        public static LocalDate lerData(String mensagem){
+            while (true){
+                System.out.print(mensagem + " (Formato: dd/MM/yyyy): ");
+                String entrada = sc.nextLine().trim();
+                try{
+                    return LocalDate.parse(entrada, DATE_TIME_FORMATTER);
+                } catch (DateTimeParseException e){
+                    System.out.println("Formato de data e hora inválido! Use: dd/MM/yyyy HH:mm ");
                 }
             }
         }

@@ -1,4 +1,8 @@
+package hospital.entidade;
+
+import hospital.interfac.PacienteInterface;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Pacientes implements PacienteInterface {
@@ -6,8 +10,7 @@ public class Pacientes implements PacienteInterface {
     private String cpf;
     private int idade;
     private String id;
-    private List<String> historicoInternacoes;
-    private List<String> historicoConsultas;
+    private List<Internacao> internacoes;
     private List<Consulta> consultas;
     private List<Exame> exames;
 
@@ -16,8 +19,7 @@ public class Pacientes implements PacienteInterface {
         this.cpf = cpf;
         this.idade = idade;
         this.id = id;
-        this.historicoConsultas = new ArrayList<>();
-        this.historicoInternacoes = new ArrayList<>();
+        this.internacoes = new ArrayList<>();
         this.consultas = new ArrayList<>();
         this.exames = new ArrayList<>();
 
@@ -26,6 +28,7 @@ public class Pacientes implements PacienteInterface {
     public String getNome() {
         return nome;
     }
+
     @Override
     public int getIdade() {
         return idade;
@@ -34,39 +37,45 @@ public class Pacientes implements PacienteInterface {
     public String getId() {
         return id;
     }
+
     @Override
     public String getCpf() {
         return cpf;
     }
+
     @Override
-    public List<String> getHistoricoInternacoes() {
-        return historicoInternacoes;
+    public List<Internacao> getHistoricoInternacoes() {
+        return Collections.unmodifiableList(internacoes);
     }
+
     @Override
-    public List<String> getHistoricoConsultas() {
-        return historicoConsultas;
+    public List<Consulta> getHistoricoConsultas() {
+        return Collections.unmodifiableList(consultas);
     }
+
     public void adicionarConsulta(Consulta consulta){
         consultas.add(consulta);
-        historicoConsultas.add("Consulta com " + consulta.getMedicos().getNome() + " no dia " + consulta.getDataHorario());
     }
+
     public List<Consulta> getConsultas() {
-        return consultas;
+        return Collections.unmodifiableList(consultas);
     }
-    public void adicionarInternacao(String internacao){
-        historicoInternacoes.add(internacao);
+
+    public void adicionarInternacao(Internacao internacao){
+        internacoes.add(internacao);
     }
 
     public void adicionarExame(Exame exame) {
         exames.add(exame);
-        historicoConsultas.add("Exame de " + exame.getTipo() + " em " + exame.getDataHorario());
     }
+
     public List<Exame> getExames() {
-        return exames;
+
+        return Collections.unmodifiableList(exames);
     }
 
     public String toString(){
-        return " Paciente: "+  nome  + " |CPF: " +  cpf  + " |Idade: " +  idade  + " |Identificação: " +  id;
+        return " Paciente: "+  nome  + " |CPF: " +  cpf  + " |Idade: " +  idade  + " anos " + " |Identificação: " +  id;
     }
 
 }

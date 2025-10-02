@@ -1,6 +1,14 @@
+package hospital.terminal;
+
+import hospital.entidade.Consulta;
+import hospital.entidade.Exame;
+import hospital.entidade.Internacao;
+import hospital.entidade.Pacientes;
+import hospital.servico.AgendamentoExame;
+import hospital.util.Excecao;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -64,25 +72,32 @@ public class Main {
 
         while (!sair){
             System.out.println("       \n|-Bem vindo-| \n---|HOSPITAL THE FIRST OF US|---");
-            System.out.println("1 - Lista de Pacientes");
+            System.out.println("1 - Lista de hospital.entidade.Pacientes");
             System.out.println("2 - Lista de Médicos");
             System.out.println("3 - Cadastrar novo Paciente");
-            System.out.println("4 - Agendar Consulta");
+            System.out.println("4 - Agendar hospital.entidade.Consulta");
             System.out.println("5 - Mostrar histórico de paciente");
             System.out.println("6 - Registrar internação");
             System.out.println("7 - Liberar Internação");
-            System.out.println("8 - Agendar Exame");
+            System.out.println("8 - Agendar hospital.entidade.Exame");
             System.out.println("0 - Sair");
 
             int opcao = Excecao.lerOpcaoMenu("\nPor favor, escolha uma opção: ");
 
             switch (opcao){
                 case 1:
+                    public static void listarPacientes(List<Pacientes> pacientes) {
                     System.out.println("     \nPacientes cadastrados:");
-                    for(Pacientes p : pacientes){
+                    for (Pacientes p : pacientes) {
                         System.out.println(p);
                     }
-                    break;
+                }
+                public static void listarMedicos(List<Medicos> medicos) {
+                    System.out.println("Médicos cadastrados:");
+                    for (Medicos m : medicos) {
+                        System.out.println(m);
+                    }
+                }
                 case 2:
                     System.out.println("Médicos cadastrados:");
                     for (Medicos m : medicos){
@@ -101,13 +116,13 @@ public class Main {
 
                     boolean voltarDoSubMenu = false;
                     while (!voltarDoSubMenu){
-                        System.out.println("1 - Agendar Consulta");
-                        System.out.println("2 - Agendar Exame");
+                        System.out.println("1 - Agendar hospital.entidade.Consulta");
+                        System.out.println("2 - Agendar hospital.entidade.Exame");
                         System.out.println("0 - Voltar ao Menu Principal");
                         int subOpcao = Excecao.lerOpcaoMenu("Escolha uma opção: ");
                         switch (subOpcao) {
                             case 1:
-                                System.out.println("\n ||Agendar Consulta||");
+                                System.out.println("\n ||Agendar hospital.entidade.Consulta||");
                                 System.out.println("Médicos Disponíveis: ");
                                 for (Medicos m : medicos) {
                                     System.out.println(m);
@@ -129,16 +144,16 @@ public class Main {
                                     System.out.println("Esse horário não está disponível! Por favor, escolha um horário válido.");
                                     break;
                                 }
-                                String desc = Excecao.lerString("Descrição da Consulta: ");
+                                String desc = Excecao.lerString("Descrição da hospital.entidade.Consulta: ");
                                 agendarConsulta(medicoEscolhido, novoPaciente, desc, horario);
                                 break;
                             case 2:
-                                System.out.println("\n|| Agendar Exame ||");
-                                String tipoExame = Excecao.lerString("Tipo de Exame: ");
+                                System.out.println("\n|| Agendar hospital.entidade.Exame ||");
+                                String tipoExame = Excecao.lerString("Tipo de hospital.entidade.Exame: ");
                                 String dataHorarioExame = Excecao.lerString("Data e horário do exame: ");
 
                                 AgendamentoExame.agendarExame(novoPaciente, tipoExame, dataHorarioExame);
-                                System.out.println("Exame agendado para: " + novoPaciente.getNome() + " - " + tipoExame + " em " + dataHorarioExame);
+                                System.out.println("hospital.entidade.Exame agendado para: " + novoPaciente.getNome() + " - " + tipoExame + " em " + dataHorarioExame);
                                 break;
                             case 0:
                                 voltarDoSubMenu = true;
@@ -172,7 +187,7 @@ public class Main {
                         System.out.println("Esse horário não está disponível! POr favor Escolha um horário válido");
                         break;
                     }
-                    String desc = Excecao.lerString("Descrição da Consulta: ");
+                    String desc = Excecao.lerString("Descrição da hospital.entidade.Consulta: ");
                     agendarConsulta(medicoEscolhido, pacienteEscolhido, desc, horario);
                     break;
 
@@ -246,10 +261,10 @@ public class Main {
                         System.out.println("Paciente não encontrado!");
                         break;
                     }
-                    String tipoExame = Excecao.lerString("Tipo de Exame: ");
+                    String tipoExame = Excecao.lerString("Tipo de hospital.entidade.Exame: ");
                     String dataHorarioExame = Excecao.lerString("Data e horário do exame: ");
                     AgendamentoExame.agendarExame(pExame, tipoExame, dataHorarioExame);
-                    System.out.println("Exame agendado para: " + pExame.getNome() + " - " + tipoExame + " em " + dataHorarioExame);
+                    System.out.println("hospital.entidade.Exame agendado para: " + pExame.getNome() + " - " + tipoExame + " em " + dataHorarioExame);
                     break;
                 case 0:
                     sair = true;
@@ -299,7 +314,7 @@ public class Main {
         medicos.adicionarConsulta(consulta);
         medicos.getHorariosDisponiveis().remove(horario);
 
-        System.out.println("Consulta agendada: " + consulta + "Tenha um bom dia!");
+        System.out.println("hospital.entidade.Consulta agendada: " + consulta + "Tenha um bom dia!");
     }
 
 }

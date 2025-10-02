@@ -20,10 +20,10 @@ Desenvolvimento de um sistema de gerenciamento hospitalar utilizando os conceito
 ## Instruções para Compilação e Execução
 
 1. **Compilação:**  
-   [Descrever aqui como compilar o projeto. Exemplo: `javac Main.java` ou o script usado]
+   [Descrever aqui como compilar o projeto. Exemplo: `javac hospital.terminal.Main.java` ou o script usado]
 
 2. **Execução:**  
-   [Descrever aqui como executar o projeto. Exemplo: `java Main` ou o script usado]
+   [Descrever aqui como executar o projeto. Exemplo: `java hospital.terminal.Main` ou o script usado]
 
 3. **Estrutura de Pastas:**  
    [Descrever aqui as principais pastas do projeto]
@@ -70,18 +70,18 @@ Desenvolvimento de um sistema de gerenciamento hospitalar utilizando os conceito
 
 O sistema deve simular o funcionamento de um hospital com cadastro de *pacientes, médicos, especialidades, consultas e internações*.  
 
-1. *Cadastro de Pacientes*  
-   - Pacientes comuns e pacientes especiais (ex: com plano de saúde).  
+1. *Cadastro de hospital.entidade.Pacientes*  
+   - hospital.entidade.Pacientes comuns e pacientes especiais (ex: com plano de saúde).  
    - Cada paciente deve ter: nome, CPF, idade, histórico de consultas e internações.  
 
 2. *Cadastro de Médicos*  
    - Médicos podem ter especialidades (ex: cardiologia, pediatria, ortopedia).  
    - Cada médico deve ter: nome, CRM, especialidade, custo da consulta e agenda de horários.  
 
-3. *Agendamento de Consultas*  
+3. *hospital.servico.Agendamento de Consultas*  
    - Um paciente pode agendar uma consulta com um médico disponível.  
    - Consultas devem registrar: paciente, médico, data/hora, local, status (agendada, concluída, cancelada).  
-   - Pacientes especiais (plano de saúde) podem ter *vantagens*, como desconto.  
+   - hospital.entidade.Pacientes especiais (plano de saúde) podem ter *vantagens*, como desconto.  
    - Duas consultas não podem estar agendadas com o mesmo médico na mesma hora, ou no mesmo local e hora
 
 4. *Consultas e Diagnósticos*  
@@ -89,7 +89,7 @@ O sistema deve simular o funcionamento de um hospital com cadastro de *pacientes
    - Cada consulta deve ser registrada no *histórico do paciente*.  
 
 5. *Internações*  
-   - Pacientes podem ser internados.  
+   - hospital.entidade.Pacientes podem ser internados.  
    - Registrar: paciente, médico responsável, data de entrada, data de saída (se já liberado), quarto e custo da internação.  
    - Deve existir controle de *ocupação dos quartos* (não permitir duas internações no mesmo quarto simultaneamente).  
    - Internações devem poder ser canceladas, quando isso ocorrer, o sistema deve ser atualizado automaticamente.
@@ -99,13 +99,13 @@ O sistema deve simular o funcionamento de um hospital com cadastro de *pacientes
    -  Cada plano pode oferecer *descontos* para *especializações* diferentes, com possibilidade de descontos variados.
    -  Um paciente que tenha o plano de saúde deve ter o desconto aplicado.
    -  Deve existir a possibilidade de um plano *especial* que torna internação de menos de uma semana de duração gratuita.
-   -  Pacientes com 60+ anos de idade devem ter descontos diferentes.
+   -  hospital.entidade.Pacientes com 60+ anos de idade devem ter descontos diferentes.
 
 7. *Relatórios*  
-   - Pacientes cadastrados (com histórico de consultas e internações).  
+   - hospital.entidade.Pacientes cadastrados (com histórico de consultas e internações).  
    - Médicos cadastrados (com agenda e número de consultas realizadas).  
    - Consultas futuras e passadas (com filtros por paciente, médico ou especialidade).  
-   - Pacientes internados no momento (com tempo de internação).  
+   - hospital.entidade.Pacientes internados no momento (com tempo de internação).  
    - Estatísticas gerais (ex: médico que mais atendeu, especialidade mais procurada).  
    - Quantidade de pessoas em um determinado plano de saúde e quanto aquele plano *economizou* das pessoas que o usam.  
 
@@ -124,7 +124,7 @@ O sistema deve simular o funcionamento de um hospital com cadastro de *pacientes
 
 1. *Modos da Aplicação (1,5)* → Cadastro de pacientes, médicos, planos de saúde, consultas e internações.  
 2. *Armazenamento em arquivo (1,0)* → Dados persistidos corretamente, leitura e escrita funcional.  
-3. *Herança (1,0)* → Ex.: Paciente e PacienteEspecial, Consulta e ConsultaEspecial, Médico e subclasses por especialidade.  
+3. *Herança (1,0)* → Ex.: Paciente e PacienteEspecial, hospital.entidade.Consulta e ConsultaEspecial, Médico e subclasses por especialidade.  
 4. *Polimorfismo (1,0)* → Ex.: regras diferentes para agendamento, preços de consultas.
 5. *Encapsulamento (1,0)* → Atributos privados, getters e setters adequados.  
 6. *Modelagem (1,0)* → Estrutura de classes clara, bem planejada e com relacionamentos consistentes.  
