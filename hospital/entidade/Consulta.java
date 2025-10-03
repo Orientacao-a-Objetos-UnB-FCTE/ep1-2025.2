@@ -20,35 +20,26 @@ public class Consulta {
 
     }
     public Pacientes getPacientes() {
-
         return paciente;
     }
     public Medicos getMedicos() {
-
         return medico;
     }
     public String getDescricao() {
-
         return descricao;
     }
     public LocalDateTime getDataHorario() {
-
         return dataHorario;
     }
     public void concluirConsulta(){
-
         this.status = StatusConsulta.CONCLUIDA;
     }
     public void cancelarConsulta(){
-
         this.status = StatusConsulta.CANCELADA;
     }
     public StatusConsulta getStatus() {
-
         return status;
     }
-
-
     public String toString(){
         return "Consulta com: " + medico.getNome() + " | Paciente: " + paciente.getNome() + " em " + dataHorario + " para " + descricao + " está " + status;
     }

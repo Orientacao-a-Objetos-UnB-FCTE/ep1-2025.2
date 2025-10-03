@@ -10,12 +10,12 @@ import java.time.format.DateTimeParseException;
 
 public class Excecao {
     private static final Scanner sc = new Scanner(System.in);
-    private static DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-    private static DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    private static DateTimeFormatter DATA_HORA = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+    private static DateTimeFormatter DATA = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     public static void closeScanner(){
         if (sc != null){
             sc.close();
-            System.out.println("Muito obrigado, volte sempre (mas melhor não) ao Hospital");
+            System.out.println("Muito obrigado, volte sempre (mas melhor não) ao Hospital Saint Dennis");
         }
     }
         public static int lerOpcaoMenu(String mensagem) {
@@ -23,7 +23,7 @@ public class Excecao {
                 try {
                     System.out.print(mensagem);
                     int opcao = Integer.parseInt(sc.nextLine());
-                    if (opcao >= 0) {
+                    if (opcao < 0) {
                         System.out.println("Opção inválida. Digite um número válido.");
                     } else {
                         return opcao;
@@ -95,9 +95,9 @@ public class Excecao {
                 System.out.print(mensagem + " (Formato: dd/MM/yyyy HH:mm): ");
                 String entrada = sc.nextLine().trim();
                 try {
-                    return LocalDateTime.parse(entrada, DATE_TIME_FORMATTER);
+                    return LocalDateTime.parse(entrada, DATA_HORA);
                 }catch (DateTimeParseException e){
-                    System.out.println("Formato de data e hora inválido! Use: dd/MM/yyyy HH:mm ");
+                    System.out.println("Formato de data e hora inválido! Use ex: 12/03/2015 12:10 ");
                 }
 
 
@@ -108,9 +108,9 @@ public class Excecao {
                 System.out.print(mensagem + " (Formato: dd/MM/yyyy): ");
                 String entrada = sc.nextLine().trim();
                 try{
-                    return LocalDate.parse(entrada, DATE_TIME_FORMATTER);
+                    return LocalDate.parse(entrada, DATA_HORA);
                 } catch (DateTimeParseException e){
-                    System.out.println("Formato de data e hora inválido! Use: dd/MM/yyyy HH:mm ");
+                    System.out.println("Formato de data e hora inválido! Use ex: 21/07/1912 07:35 ");
                 }
             }
         }

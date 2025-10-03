@@ -45,11 +45,11 @@ public class Medicos implements MedicosInterface {
         return true;
     }
     public List<LocalDateTime> getHorariosAgendados() {
-        List<LocalDateTime> horaries = new ArrayList<>();
+        List<LocalDateTime> horarios = new ArrayList<>();
         for (Consulta consulta : consultas) {
-            horaries.add(consulta.getDataHorario());
+            horarios.add(consulta.getDataHorario());
         }
-        return Collections.unmodifiableList(horaries);
+        return Collections.unmodifiableList(horarios);
     }
     @Override
     public void adicionarConsulta(Consulta consulta){

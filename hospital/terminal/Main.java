@@ -1,16 +1,22 @@
 package hospital.terminal;
 
-import hospital.entidade.Consulta;
-import hospital.entidade.Exame;
 import hospital.entidade.Internacao;
 import hospital.entidade.Pacientes;
 import hospital.servico.AgendamentoExame;
 import hospital.util.Excecao;
+import hospital.entidade.Medicos;
+import hospital.servico.Agendamento;
+import hospital.servico.GerenciarInternacao;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
+    private static DateTimeFormatter DATA_HORA = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+    private static DateTimeFormatter DATA = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     public static void main(String[] args) {
 
 
@@ -36,236 +42,59 @@ public class Main {
 
         Medicos m0 = new Medicos("Jill Valentine", "DF001", "Clínico-Geral", 250.00);
         medicos.add(m0);
-        m0.adicionarHorario("Segunda ás 10:00"); m0.adicionarHorario("Segunda ás 15:00"); m0.adicionarHorario("Quarta ás 9:00");
-        m0.adicionarHorario("Quinta ás 16:00");
 
         Medicos m1 = new Medicos("Joel Miller", "DF002", "Pediatra", 150.00);
         medicos.add(m1);
-        m1.adicionarHorario("Terça ás 8:00"); m1.adicionarHorario("Terça ás 13:00"); m1.adicionarHorario("Quinta ás 10:00");
-        m1.adicionarHorario("Quinta ás 16:15"); m1.adicionarHorario("Sexta ás 12:00");
 
         Medicos m2 = new Medicos("Nathan Drake", "DF003", "Cardiologista", 80.00);
         medicos.add(m2);
-        m2.adicionarHorario("Quarta ás 8:00");m2.adicionarHorario("Quarta ás 10:30");m2.adicionarHorario("Quarta ás 11:40");
-        m2.adicionarHorario("Sexta ás 9:30:00");m2.adicionarHorario("Sexta ás 14:20");m2.adicionarHorario("Sexta ás 16:00");
 
         Medicos m3 = new Medicos("Lara Croft", "DF004", "Pneumologista", 125.00);
         medicos.add(m3);
-        m3.adicionarHorario("Segunda ás 13:10");m3.adicionarHorario("Quarta ás 12:50");m3.adicionarHorario("Sábado ás 10:30");
 
         Medicos m4 = new Medicos("Geralt de Rívia", "DF005", "Infectologista", 110.00);
         medicos.add(m4);
-        m4.adicionarHorario("Sábado ás 8:20");m4.adicionarHorario("Terça ás 10:00");m4.adicionarHorario("Quinta ás 11:45");
-        m4.adicionarHorario("Quinta ás 9:00");
 
         Medicos m5 = new Medicos("Gordon Freeman", "DF006", "Geriatra", 115.00);
         medicos.add(m5);
-        m5.adicionarHorario("Segunda ás 14:30");m5.adicionarHorario("Segunda ás 16:15");
-
 
         Medicos m6 = new Medicos("James Sunderland", "DF007", "Psiquiatra", 100.00);
         medicos.add(m6);
-        m6.adicionarHorario("Sábado ás 10:00");m6.adicionarHorario("Sábado ás 11:30");m6.adicionarHorario("Sábado ás 8:25");
+
+        try {
+            LocalDateTime dataInicial = LocalDateTime.now().plusDays(1).withHour(10).withMinute(0);
+            Agendamento.agendarConsulta(m0, p0, "Check-up inicial", dataInicial);
+
+            GerenciarInternacao.registrarInternacao(internacoes, p1, m0, LocalDate.now().minusDays(3), "Q201", 500.00);
+        }catch (IllegalArgumentException e){
+            System.out.println("Erro ao configurar dados iniciais: " + e.getMessage());
+        }
 
         boolean sair = false;
-
 
         while (!sair){
             System.out.println("       \n|-Bem vindo-| \n---|HOSPITAL THE FIRST OF US|---");
             System.out.println("1 - Lista de hospital.entidade.Pacientes");
             System.out.println("2 - Lista de Médicos");
             System.out.println("3 - Cadastrar novo Paciente");
-            System.out.println("4 - Agendar hospital.entidade.Consulta");
+            System.out.println("4 - Agendar Consulta");
             System.out.println("5 - Mostrar histórico de paciente");
             System.out.println("6 - Registrar internação");
             System.out.println("7 - Liberar Internação");
-            System.out.println("8 - Agendar hospital.entidade.Exame");
+            System.out.println("8 - Agendar Exame");
             System.out.println("0 - Sair");
 
             int opcao = Excecao.lerOpcaoMenu("\nPor favor, escolha uma opção: ");
 
-            switch (opcao){
-                case 1:
-                    public static void listarPacientes(List<Pacientes> pacientes) {
-                    System.out.println("     \nPacientes cadastrados:");
-                    for (Pacientes p : pacientes) {
-                        System.out.println(p);
-                    }
-                }
-                public static void listarMedicos(List<Medicos> medicos) {
-                    System.out.println("Médicos cadastrados:");
-                    for (Medicos m : medicos) {
-                        System.out.println(m);
-                    }
-                }
-                case 2:
-                    System.out.println("Médicos cadastrados:");
-                    for (Medicos m : medicos){
-                        System.out.println(m);
-                    }
-                    break;
-                case 3:
-                    String nomeNovo = Excecao.lerStringSemNumero("Nome do Paciente: ");
-                    String cpfNovo = Excecao.lerCpf("CPF do Paciente: ");
-                    int idadeNova= Excecao.lerInteiroPositivo("Idade do Paciente: ");
-                    String idNovo = Excecao.lerString("ID do Paciente");
-
-                    Pacientes novoPaciente = new Pacientes(nomeNovo, cpfNovo, idadeNova, idNovo);
-                    pacientes.add(novoPaciente);
-                    System.out.println("Paciente cadastrado com sucesso!" + nomeNovo + "!");
-
-                    boolean voltarDoSubMenu = false;
-                    while (!voltarDoSubMenu){
-                        System.out.println("1 - Agendar hospital.entidade.Consulta");
-                        System.out.println("2 - Agendar hospital.entidade.Exame");
-                        System.out.println("0 - Voltar ao Menu Principal");
-                        int subOpcao = Excecao.lerOpcaoMenu("Escolha uma opção: ");
-                        switch (subOpcao) {
-                            case 1:
-                                System.out.println("\n ||Agendar hospital.entidade.Consulta||");
-                                System.out.println("Médicos Disponíveis: ");
-                                for (Medicos m : medicos) {
-                                    System.out.println(m);
-                                }
-                                String nomeMedico = Excecao.lerString("\nNome do Médico: ");
-                                Medicos medicoEscolhido = buscarMedico(medicos, nomeMedico);
-
-                                if (medicoEscolhido == null) {
-                                    System.out.println("Médico não encontrado no sistema!");
-                                    break;
-                                }
-                                System.out.println("Horários disponíveis para " + medicoEscolhido.getNome() + ":");
-                                for (String h : medicoEscolhido.getHorariosDisponiveis()) {
-                                    System.out.println(("- " + h));
-                                }
-                                String horario = Excecao.lerString("Escolha um dos horários acima: ");
-
-                                if (!medicoEscolhido.simDisponivel(horario)) {
-                                    System.out.println("Esse horário não está disponível! Por favor, escolha um horário válido.");
-                                    break;
-                                }
-                                String desc = Excecao.lerString("Descrição da hospital.entidade.Consulta: ");
-                                agendarConsulta(medicoEscolhido, novoPaciente, desc, horario);
-                                break;
-                            case 2:
-                                System.out.println("\n|| Agendar hospital.entidade.Exame ||");
-                                String tipoExame = Excecao.lerString("Tipo de hospital.entidade.Exame: ");
-                                String dataHorarioExame = Excecao.lerString("Data e horário do exame: ");
-
-                                AgendamentoExame.agendarExame(novoPaciente, tipoExame, dataHorarioExame);
-                                System.out.println("hospital.entidade.Exame agendado para: " + novoPaciente.getNome() + " - " + tipoExame + " em " + dataHorarioExame);
-                                break;
-                            case 0:
-                                voltarDoSubMenu = true;
-                                System.out.println("Voltando ao Menu Principal.");
-                                break;
-                            default:
-                                System.out.println("Opção inválida.");
-                                break;
-                        }
-                    }
-                    break;
-                case 4:
-                    String nomePaciente = Excecao.lerString("Nome do Paciente: ");
-                    Pacientes pacienteEscolhido = buscarPaciente(pacientes, nomePaciente);
-                    if(pacienteEscolhido == null){
-                        System.out.println("paciente não encontrado no sistema!");
-                        break;
-                    }
-                    String nomeMedico = Excecao.lerString("Nome do Médico: ");
-                    Medicos medicoEscolhido = buscarMedico(medicos, nomeMedico);
-                    if (medicoEscolhido == null){
-                        System.out.println("Médico não encontrado no sistema!");
-                        break;
-                    }
-                    System.out.println("Horários disponíveis para " + medicoEscolhido.getNome() +":");
-                    for (String h : medicoEscolhido.getHorariosDisponiveis()){
-                        System.out.println(("- " + h));
-                    }
-                    String horario = Excecao.lerString("Escolha um dos horários acima: ");
-                    if (!medicoEscolhido.simDisponivel(horario)){
-                        System.out.println("Esse horário não está disponível! POr favor Escolha um horário válido");
-                        break;
-                    }
-                    String desc = Excecao.lerString("Descrição da hospital.entidade.Consulta: ");
-                    agendarConsulta(medicoEscolhido, pacienteEscolhido, desc, horario);
-                    break;
-
-
-                    case 5:
-                    String nomeHistorico = Excecao.lerString("Nome do paciente: ");
-                    Pacientes pHistorico = buscarPaciente(pacientes, nomeHistorico);
-                    if (pHistorico == null){
-                        System.out.println("Paciente não encontrado no sistema!");
-                        break;
-                    }
-                    System.out.println("Histórico de " + pHistorico.getNome() + ":");
-                    for (Consulta c : pHistorico.getConsultas()){
-                        System.out.println(c);
-                    }
-                    for (Exame e : pHistorico.getExames()){
-                        System.out.println(e);
-                    }
-                    break;
-                case 6:
-                    String nomeInt = Excecao.lerString("Nome do paciente para internação: ");
-                    Pacientes pInt = buscarPaciente(pacientes, nomeInt);
-                    if(pInt == null){
-                        System.out.println("Paciente não encontrado no sistema!");
-                        break;
-                    }
-                    String nomeMed = Excecao.lerString("Nome do médico responsável:");
-                    Medicos mResp = buscarMedico(medicos, nomeMed);
-                    if(mResp == null){
-                        System.out.println("Médico não encontrado no sistema!");
-                        break;
-                    }
-                    String dataEntrada = Excecao.lerString(" Digite a data da entrada, por favor! ");
-                    String quarto = Excecao.lerString("Quarto: ");
-                    double custo = Excecao.lerDoublePositivo("Custo: ");
-                    Internacao internacao = new Internacao(pInt, mResp, dataEntrada, quarto, custo);
-                    internacoes.add(internacao);
-                    System.out.println("Internação registrada com sucesso: " + internacao);
-                    break;
-                case 7:
-                    System.out.println("\nInternações ativas no sistema:");
-                    boolean temAtiva = false;
-                    for (Internacao i : internacoes) {
-                        if (i.isAtiva()) {
-                            System.out.println("Paciente: " + i.getMedicoResponsavel().getNome() +
-                                    " | Quarto: " + i.getQuarto() +
-                                    " | Data entrada: " + i.getDataEntrada());
-                            temAtiva = true;
-                        }
-                    }
-                    if (!temAtiva) {
-                        System.out.println("Não há internações ativas para liberar.");
-                        break;
-                    }
-                    String quartoLiberar = Excecao.lerString("\nDigite o número do quarto da internação a liberar: ");
-                    Internacao intLiberar = buscarInternacao(internacoes, quartoLiberar);
-
-                    if (intLiberar != null && intLiberar.isAtiva()) {
-                        String dataSaida = Excecao.lerString("Digite a data de baixa: ");
-                        intLiberar.liberarInternacao(dataSaida);
-                        System.out.println("Baixa registrada: " + intLiberar);
-                    } else {
-                        System.out.println("Internação não encontrada ou já liberada!");
-                    }
-                    break;
-                case 8:
-                    System.out.print("Nome do paciente: ");
-                    String nomeExame = Excecao.lerString("Nome do Paciente: ");
-                    Pacientes pExame = buscarPaciente(pacientes, nomeExame);
-                    if (pExame == null){
-                        System.out.println("Paciente não encontrado!");
-                        break;
-                    }
-                    String tipoExame = Excecao.lerString("Tipo de hospital.entidade.Exame: ");
-                    String dataHorarioExame = Excecao.lerString("Data e horário do exame: ");
-                    AgendamentoExame.agendarExame(pExame, tipoExame, dataHorarioExame);
-                    System.out.println("hospital.entidade.Exame agendado para: " + pExame.getNome() + " - " + tipoExame + " em " + dataHorarioExame);
-                    break;
+            switch (opcao) {
+                case 1: listarPacientes(pacientes); break;
+                case 2: listarMedicos(medicos); break;
+                case 3: cadastrarPacienteAcao(pacientes, medicos); break;
+                case 4: agendarConsultaAcao(pacientes, medicos); break;
+                case 5: mostrarHistoricoPacienteAcao(pacientes); break;
+                case 6: registrarInternacaoAcao(pacientes, medicos, internacoes); break;
+                case 7: liberarInternacaoAcao(internacoes); break;
+                case 8: agendarExameAcao(pacientes); break;
                 case 0:
                     sair = true;
                     System.out.println("Saindo");
@@ -275,14 +104,231 @@ public class Main {
                     System.out.println("Opção inválida");
             }
         }
-
-
-
     }
-    private static void agendarAcao(List<Medicos> medicos, Pacientes paciente){
-                System.out.println("Médicos Discponíveis: ");
-                medicos.forEach(System.out::println);
+    public static void listarPacientes(List<Pacientes> pacientes) {
+        System.out.println("     \nPacientes cadastrados:");
+        for (Pacientes p : pacientes) {
+            System.out.println(p);
+        }
+    }
+
+    public static void listarMedicos(List<Medicos> medicos) {
+        System.out.println("Médicos cadastrados:");
+        for (Medicos m : medicos) {
+            System.out.println(m);
+        }
+    }
+    public static void cadastrarPacienteAcao(List<Pacientes> pacientes, List<Medicos> medicos) {
+        String nomeNovo = Excecao.lerStringSemNumero("Nome do Paciente: ");
+        String cpfNovo = Excecao.lerCpf("CPF do Paciente: ");
+        int idadeNova = Excecao.lerInteiroPositivo("Idade do Paciente: ");
+        String idNovo = Excecao.lerString("ID do Paciente (utilize apenas 5 termos, entre letras e úmeros): ");
+
+        Pacientes novoPaciente = new Pacientes(nomeNovo, cpfNovo, idadeNova, idNovo);
+        pacientes.add(novoPaciente);
+        System.out.println("Paciente cadastrado com sucesso! " + nomeNovo + "!");
+
+        boolean voltarDoSubMenu = false;
+        while (!voltarDoSubMenu) {
+            System.out.println("\n--- Ações para " + novoPaciente.getNome() + " ---");
+            System.out.println("1 - Agendar Consulta");
+            System.out.println("2 - Agendar Exame");
+            System.out.println("0 - Voltar ao Menu Principal");
+            int subOpcao = Excecao.lerOpcaoMenu("Escolha uma opção: ");
+
+            switch (subOpcao) {
+                case 1:
+                    agendarConsultaSimples(medicos, novoPaciente);
+                    break;
+                case 2:
+                    agendarExameSimples(novoPaciente);
+                    break;
+                case 0:
+                    voltarDoSubMenu = true;
+                    System.out.println("Voltando ao Menu Principal.");
+                    break;
+                default:
+                    System.out.println("Opção inválida.");
             }
+        }
+    }
+    public static void agendarConsultaAcao(List<Pacientes> pacientes, List<Medicos> medicos) {
+        System.out.println("\n|| Agendar Consulta ||");
+        String nomePaciente = Excecao.lerString("Nome do Paciente: ");
+        Pacientes pacienteEscolhido = buscarPaciente(pacientes, nomePaciente);
+
+        if (pacienteEscolhido == null) {
+            System.out.println("Paciente não encontrado no sistema!");
+            return;
+        }
+        agendarConsultaSimples(medicos, pacienteEscolhido);
+    }
+
+    public static void agendarConsultaSimples(List<Medicos> medicos, Pacientes paciente) {
+        System.out.println("\n ||Agendar Consulta||");
+        listarMedicos(medicos);
+
+        String nomeMedico = Excecao.lerString("\nNome do Médico: ");
+        Medicos medicoEscolhido = buscarMedico(medicos, nomeMedico);
+
+        if (medicoEscolhido == null) {
+            System.out.println("Médico não encontrado no sistema!");
+            return;
+        }
+
+        System.out.println("--- Horários AGENDADOS para " + medicoEscolhido.getNome() + " ---");
+        List<LocalDateTime> agendados = medicoEscolhido.getHorariosAgendados();
+        if (agendados.isEmpty()) {
+            System.out.println("Médico não tem consultas agendadas (Totalmente disponível no momento).");
+        } else {
+            System.out.println("Os horários abaixo estão ocupados:");
+            agendados.forEach(h -> System.out.println(("- " + h.format(DATA_HORA))));
+        }
+
+        LocalDateTime horario = Excecao.lerDataHora("\nEscolha a Data e Hora para a Consulta");
+        String desc = Excecao.lerString("Descrição da Consulta: ");
+
+        try {
+            Agendamento.agendarConsulta(medicoEscolhido, paciente, desc, horario);
+            System.out.println("Consulta agendada com sucesso!");
+        } catch (IllegalArgumentException e) {
+            System.out.println("Erro ao agendar: " + e.getMessage());
+        }
+    }
+    public static void mostrarHistoricoPacienteAcao(List<Pacientes> pacientes) {
+        String nomeHistorico = Excecao.lerString("Nome do paciente: ");
+        Pacientes pHistorico = buscarPaciente(pacientes, nomeHistorico);
+
+        if (pHistorico == null) {
+            System.out.println("Paciente não encontrado no sistema!");
+            return;
+        }
+
+        boolean voltarHistorico = false;
+        while (!voltarHistorico) {
+            System.out.println("\n--- Histórico de " + pHistorico.getNome() + " ---");
+            System.out.println("1 - Ver Consultas");
+            System.out.println("2 - Ver Exames");
+            System.out.println("3 - Ver Internações");
+            System.out.println("0 - Voltar");
+
+            int subOpcao = Excecao.lerOpcaoMenu("Escolha o tipo de histórico para visualizar: ");
+
+            switch (subOpcao) {
+                case 1:
+                    System.out.println("\n[CONSULTAS]");
+                    if (pHistorico.getHistoricoConsultas().isEmpty()) {
+                        System.out.println("Nenhuma consulta registrada.");
+                    } else {
+                        pHistorico.getHistoricoConsultas().forEach(c -> System.out.println(
+                                c.toString() + " | Data: " + c.getDataHorario().format(DATA_HORA)));
+                    }
+                    break;
+                case 2:
+                    System.out.println("\n[EXAMES]");
+                    if (pHistorico.getExames().isEmpty()) {
+                        System.out.println("Nenhum exame registrado.");
+                    } else {
+                        pHistorico.getExames().forEach(e -> System.out.println(
+                                e.toString() + " | Data: " + e.getDataHorario().format(DATA_HORA)));
+                    }
+                    break;
+                case 3:
+                    System.out.println("\n[INTERNAÇÕES]");
+                    if (pHistorico.getHistoricoInternacoes().isEmpty()) {
+                        System.out.println("Nenhuma internação registrada.");
+                    } else {
+                        pHistorico.getHistoricoInternacoes().forEach(i -> System.out.println(
+                                i.toString() + " | Entrada: " + i.getDataEntrada().format(DATA)));
+                    }
+                    break;
+                case 0:
+                    voltarHistorico = true;
+                    System.out.println("Voltando ao Menu Principal.");
+                    break;
+                default:
+                    System.out.println("Opção inválida.");
+            }
+        }
+    }
+    public static void registrarInternacaoAcao(List<Pacientes> pacientes, List<Medicos> medicos, List<Internacao> internacoes) {
+        System.out.println("\n|| Registrar Internação ||");
+        String nomeInt = Excecao.lerString("Nome do paciente para internação: ");
+        Pacientes pInt = buscarPaciente(pacientes, nomeInt);
+
+        if (pInt == null) {
+            System.out.println("Paciente não encontrado no sistema!");
+            return;
+        }
+        String nomeMed = Excecao.lerString("Nome do médico responsável:");
+        Medicos mResp = buscarMedico(medicos, nomeMed);
+        if (mResp == null) {
+            System.out.println("Médico não encontrado no sistema!");
+            return;
+        }
+
+        LocalDate dataEntrada = Excecao.lerData(" Digite a data da entrada: ");
+        String quarto = Excecao.lerString("Quarto: ");
+        double custo = Excecao.lerDoublePositivo("Custo: ");
+
+        try {
+            Internacao novaInternacao = GerenciarInternacao.registrarInternacao(internacoes, pInt, mResp, dataEntrada, quarto, custo);
+            System.out.println("Internação registrada com sucesso: " + novaInternacao);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Erro ao registrar internação: " + e.getMessage());
+        }
+    }
+
+    public static void liberarInternacaoAcao(List<Internacao> internacoes) {
+        System.out.println("\n|| Liberar Internação ||");
+        System.out.println("Internações ativas no sistema:");
+
+        if (internacoes.stream().noneMatch(Internacao::isAtiva)) {
+            System.out.println("Não há internações ativas para liberar.");
+            return;
+        }
+        internacoes.stream()
+                .filter(Internacao::isAtiva)
+                .forEach(i ->
+                        System.out.println(
+                                "Paciente: " + i.getPaciente().getNome() + " | Quarto: " + i.getQuarto() + " | Entrada: " + i.getDataEntrada().format(DATA)));
+
+        String quartoLiberar = Excecao.lerString("\nDigite o número do quarto da internação a liberar: ");
+
+        try {
+            LocalDate dataSaida = Excecao.lerData("Digite a data de baixa: ");
+
+            Internacao intLiberar = GerenciarInternacao.liberarInternacao(internacoes, quartoLiberar, dataSaida);
+
+            System.out.println("Baixa registrada com sucesso: " + intLiberar);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Erro ao liberar internação: " + e.getMessage());
+        }
+    }
+
+    public static void agendarExameAcao(List<Pacientes> pacientes) {
+        System.out.println("\n|| Agendar Exame ||");
+        String nomeExame = Excecao.lerString("Nome do Paciente: ");
+        Pacientes pExame = buscarPaciente(pacientes, nomeExame);
+
+        if (pExame == null) {
+            System.out.println("Paciente não encontrado!");
+            return;
+        }
+        agendarExameSimples(pExame);
+    }
+
+    public static void agendarExameSimples(Pacientes pExame) {
+        String tipoExame = Excecao.lerString("Tipo de Exame: ");
+        LocalDateTime dataHorarioExame = Excecao.lerDataHora("Data e horário do exame");
+
+        try {
+            AgendamentoExame.agendarExame(pExame, tipoExame, dataHorarioExame);
+            System.out.println("Exame de " + tipoExame + " agendado para " + pExame.getNome() + " em " + dataHorarioExame.format(DATA_HORA) + ".");
+        } catch (Exception e) {
+            System.out.println("Erro ao agendar exame: " + e.getMessage());
+        }
+    }
     public static Pacientes buscarPaciente(List<Pacientes> pacientes, String nome){
         for(Pacientes p : pacientes){
             if (p.getNome().equalsIgnoreCase(nome)){
@@ -296,25 +342,6 @@ public class Main {
                 return m;
             }
         }return null;
-    }
-    public static Internacao buscarInternacao(List<Internacao> internacoes, String quarto){
-        for(Internacao i : internacoes){
-            if(i.getQuarto().equalsIgnoreCase(quarto) && i.isAtiva()){
-                return i;
-            }
-        }return null;
-    }
-    public static void agendarConsulta(Medicos medicos, Pacientes pacientes, String descricao, String horario){
-        if (!medicos.simDisponivel(horario)){
-            System.out.println("Erro: Médico " + medicos.getNome() + "Não está disponível neste horário: " + horario);
-            return;
-        }
-        Consulta consulta = new Consulta(medicos, pacientes, descricao, horario);
-        pacientes.adicionarConsulta(consulta);
-        medicos.adicionarConsulta(consulta);
-        medicos.getHorariosDisponiveis().remove(horario);
-
-        System.out.println("hospital.entidade.Consulta agendada: " + consulta + "Tenha um bom dia!");
     }
 
 }

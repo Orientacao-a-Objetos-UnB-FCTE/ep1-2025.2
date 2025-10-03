@@ -39,6 +39,7 @@ public class Internacao {
         return quarto;
     }
 
+
     public Medicos getMedicoResponsavel() {
         return medicoResponsavel;
     }
@@ -46,7 +47,9 @@ public class Internacao {
     public LocalDate getDataBaixa() {
         return dataBaixa;
     }
-
+    public Pacientes getPaciente() {
+        return paciente;
+    }
     public String toString(){
         return "Situação da internação do paciente:" + paciente.getNome() + " no quarto:" + quarto + " no dia: " + dataEntrada + " Valor: R$ " + String.format("%.2f", custo);
     }

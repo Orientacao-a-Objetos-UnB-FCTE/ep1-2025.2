@@ -1,7 +1,7 @@
 package hospital.interfac;
+
 import hospital.entidade.Consulta;
 import hospital.entidade.Internacao;
-
 import java.util.List;
 
 public interface PacienteInterface {
