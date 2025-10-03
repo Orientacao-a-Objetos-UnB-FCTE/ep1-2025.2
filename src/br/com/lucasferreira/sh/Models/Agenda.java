@@ -14,10 +14,18 @@ public class Agenda {
     public void adicionarConsulta(Consulta novaConsulta){
         this.consultas.add(novaConsulta);
     }
-    public boolean isHorarioDisponivel(LocalDateTime horario){
+    public boolean isHorarioDisponivel(LocalDateTime horario, Medico medico,Paciente paciente){
         for(Consulta verificaDisponibilidade : this.consultas){
             LocalDateTime verificaHorarioDisponivel = verificaDisponibilidade.getDataHora();
             if(verificaHorarioDisponivel.isEqual(horario)){
+                return false;
+            }
+            if(verificaDisponibilidade.getMedico().equals(medico)){
+                System.out.println("LOG: Conflito de agenda encontrado para o médico: " + medico.getNome());
+                return false;
+            }
+            if (verificaDisponibilidade.getPaciente().equals(paciente)) {
+                System.out.println("LOG: Conflito de agenda encontrado para o paciente: " + paciente.getNome());
                 return false;
             }
             }
@@ -26,13 +34,15 @@ public class Agenda {
         }
         public boolean marcarConsulta(Consulta marcar){
         LocalDateTime horarioDesejado = marcar.getDataHora();
-        if(this.isHorarioDisponivel(horarioDesejado)){
+        Medico medicoDesejado = marcar.getMedico();
+        Paciente pacienteDaConsulta = marcar.getPaciente();
+        if(this.isHorarioDisponivel(horarioDesejado,medicoDesejado,pacienteDaConsulta)){
             this.adicionarConsulta(marcar);
             System.out.println("INFO: Consulta agendada com sucesso!");
             return true;
         }
         else{
-            System.out.println("ERRO: Horário indisponível. A consulta não foi marcada.");
+            System.out.println("INFO: A consulta não foi marcada devido ao conflito de agenda informado acima.");
             return false;
         }
 

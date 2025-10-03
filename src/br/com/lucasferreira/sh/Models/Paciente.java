@@ -33,7 +33,7 @@ public class Paciente {
         return cpf;
     }
     public boolean isEspecial(){
-        return (getIdade()>=60 ||this.pcd || this.plano == TipoPlano.ESPECIAL);
+        return (getIdade()>=60 ||this.pcd);
     }
     public boolean isPcd(){
         return pcd;

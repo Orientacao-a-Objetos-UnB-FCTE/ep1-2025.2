@@ -15,14 +15,13 @@ public class Consulta implements Comparable<Consulta>{
 
     public Paciente getPaciente() {
         return paciente;
-    }
+     }
 
     public LocalDateTime getDataHora() {
         return dataHora;
     }
     @Override
     public int compareTo(Consulta outra) {
-        // Ordena do mais antigo para o mais recente
         return this.dataHora.compareTo(outra.dataHora);
     }
 }
