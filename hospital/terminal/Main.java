@@ -102,7 +102,7 @@ public class Main {
         while (!sair){
             System.out.println("\n|-Bem vindo-| " +
                            "\n---|HOSPITAL SAINT DENNIS|---");
-            System.out.println("1 - Lista de hospital.entidade.Pacientes");
+            System.out.println("1 - Lista de Pacientes");
             System.out.println("2 - Lista de Médicos");
             System.out.println("3 - Cadastrar novo Paciente");
             System.out.println("4 - Agendar Consulta");

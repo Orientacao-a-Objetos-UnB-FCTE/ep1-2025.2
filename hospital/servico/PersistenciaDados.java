@@ -91,6 +91,7 @@ public class PersistenciaDados {
         }
     }
     public static void carregarPacientes(List<Pacientes> pacientes){
+        pacientes.clear();
         try (BufferedReader reader =new BufferedReader(new FileReader(arquivo_pacientes))){
             String linha;
             reader.readLine();
@@ -170,6 +171,7 @@ public class PersistenciaDados {
 
     }
     public static void carregarMedicos(List<Medicos> medicos) {
+        medicos.clear();
         try (BufferedReader reader = new BufferedReader(new FileReader(arquivo_medicos))) {
             String linha;
             reader.readLine();
