@@ -16,11 +16,11 @@ import java.time.LocalDate;
 
 
 public class PersistenciaDados {
-    private static String arquivo_pacientes = "pacientes.csv";
-    private static String arquivo_medicos = "medicos.csv";
-    private static String arquivo_internacoes = "internacoes.csv";
-    private static String arquivo_consultas = "consultas.csv";
-    private static String arquivo_exames = "exames.csv";
+    private static String arquivo_pacientes = "ep1-2025.2-Projeto\\pacientes.csv";
+    private static String arquivo_medicos = "ep1-2025.2-Projeto\\medicos.csv";
+    private static String arquivo_internacoes = "ep1-2025.2-Projeto\\internacoes.csv";
+    private static String arquivo_consultas = "ep1-2025.2-Projeto\\consultas.csv";
+    private static String arquivo_exames = "ep1-2025.2-Projeto\\exames.csv";
 
     public static void salvarTodosDados(List<Pacientes> pacientes, List<Medicos> medicos, List<Internacao> internacoes) {
         salvarPacientes(pacientes);

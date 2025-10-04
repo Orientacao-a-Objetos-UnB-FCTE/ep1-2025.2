@@ -31,7 +31,7 @@ public class Main {
 
         carregarDadosPersistidos(pacientes, medicos, internacoes);
 
-        if (pacientes.isEmpty()) {
+        if (pacientes.isEmpty() && medicos.isEmpty()){
             System.out.println("\n Detectando primeiro uso. Criando dados");
             p0 = new Pacientes("Leon Scott Kennedy", "123.442.331-25", 27, "RE007");
             p1 = new Pacientes("Claire Redfield", "327.198.271-21", 24, "RE010");
