@@ -19,6 +19,9 @@ public class Consulta {
         this.status = StatusConsulta.AGENDADA;
 
     }
+    public String toCSV(){
+        return paciente.getCpf() + "," + medico.getCrm() + "," + descricao + "," + dataHorario + "," + status.name();
+    }
     public Pacientes getPacientes() {
         return paciente;
     }

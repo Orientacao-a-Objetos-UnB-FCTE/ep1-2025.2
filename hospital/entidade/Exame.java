@@ -17,6 +17,9 @@ public class Exame {
         this.dataHorario = dataHorario;
         this.status = StatusExame.AGENDADO;
     }
+    public String toCSV(){
+        return paciente.getCpf() + "," + tipo + "," + dataHorario + "," + status.name();
+    }
 
     public Pacientes getPaciente() {
         return paciente;

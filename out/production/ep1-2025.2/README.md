@@ -20,16 +20,21 @@ Desenvolvimento de um sistema de gerenciamento hospitalar utilizando os conceito
 ## Instruções para Compilação e Execução
 
 1. **Compilação:**  
-   [Descrever aqui como compilar o projeto. Exemplo: `javac hospital.terminal.Main.java` ou o script usado]
+`javac hospital.terminal.Main.java`
 
 2. **Execução:**  
-   [Descrever aqui como executar o projeto. Exemplo: `java hospital.terminal.Main` ou o script usado]
+`java hospital.terminal.Main`
 
 3. **Estrutura de Pastas:**  
-   [Descrever aqui as principais pastas do projeto]
+ Pasta hopsital: endidade(Consulta, Exame, Internacao, Medicos, Pacientes)
+                 interfac(Medicosinterface, PacienteInterface)                   
+                 servico(Agendamento, AgendamentoExame, GerenciarInternacao)
+                 terminal(Main)  
+                 util(Excecao)  
+ Pasta out: (consultas.csv) (exames.csv) (internacoes.csv) (medicos.csv) (pacientes.csv)   
 
 3. **Versão do JAVA utilizada:**  
-   [Descrever aqui como versão do JAVA utilizada no projeto. Sugestão: `java 21`]
+   Oracle JDK 24.0.2 (openjdk-24)
 
 ---
 

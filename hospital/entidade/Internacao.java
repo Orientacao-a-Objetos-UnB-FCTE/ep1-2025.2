@@ -11,17 +11,21 @@ public class Internacao {
     private double custo;
     private boolean ativa;
 
-    public Internacao(Pacientes paciente, Medicos medicoResponsavel, LocalDate dataEntrada, String quarto, double custo){
+    public Internacao(Pacientes paciente, Medicos medicoResponsavel, LocalDate dataEntrada, String quarto, double custo) {
         this.paciente = paciente;
         this.medicoResponsavel = medicoResponsavel;
         this.dataEntrada = dataEntrada;
-        this.quarto =quarto;
+        this.quarto = quarto;
         this.custo = custo;
-        this.ativa =true;
+        this.ativa = true;
     }
-    public void liberarInternacao(LocalDate dataBaixa){
+
+    public void liberarInternacao(LocalDate dataBaixa) {
         this.dataBaixa = dataBaixa;
         this.ativa = false;
+    }
+    public String toCSV(){
+        return paciente.getCpf() + "," + medicoResponsavel.getCrm() + "," + dataEntrada + "," + custo + "," + quarto;
     }
     public boolean isAtiva(){
         return ativa;

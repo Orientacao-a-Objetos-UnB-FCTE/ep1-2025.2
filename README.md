@@ -20,16 +20,21 @@ Desenvolvimento de um sistema de gerenciamento hospitalar utilizando os conceito
 ## Instruções para Compilação e Execução
 
 1. **Compilação:**  
-   [Descrever aqui como compilar o projeto. Exemplo: `javac hospital.terminal.Main.java` ou o script usado]
+`javac hospital.terminal.Main.java`
 
 2. **Execução:**  
-   [Descrever aqui como executar o projeto. Exemplo: `java hospital.terminal.Main` ou o script usado]
+`java hospital.terminal.Main`
 
 3. **Estrutura de Pastas:**  
-   [Descrever aqui as principais pastas do projeto]
+ - Pasta hopsital: endidade(Consulta, Exame, Internacao, Medicos, Pacientes)
+                   interfac(Medicosinterface, PacienteInterface)                   
+                   servico(Agendamento, AgendamentoExame, GerenciarInternacao)
+                   terminal(Main)  
+                   util(Excecao)  
+ - Pasta out: (consultas.csv) (exames.csv) (internacoes.csv) (medicos.csv) (pacientes.csv)   
 
 3. **Versão do JAVA utilizada:**  
-   [Descrever aqui como versão do JAVA utilizada no projeto. Sugestão: `java 21`]
+   - Oracle JDK 24.0.2 (openjdk-24)
 
 ---
 
@@ -56,13 +61,13 @@ Desenvolvimento de um sistema de gerenciamento hospitalar utilizando os conceito
 
 ## Observações (Extras ou Dificuldades)
 
-- [Espaço para o aluno comentar qualquer funcionalidade extra que implementou, dificuldades enfrentadas, ou considerações importantes.]
+    Bem, encontrei muitos desafios nesse projeto. Primeiramente fiquei perdido no inicio, pois não fazia como funcionava a linguagem java e ainda mais para orientação a objetos. Então na primeira semana eu tava tentando entender melho como funcionava atributos, métodos e objetos de uma forma geral, com vídeos no youtube. Então eu ia aplicando devagar para ir entendendo na prática e saber como usaria no projeto. Fiquei perdido com git e com gitHub também, nunca tinha usado. Aos poucos o projeto foi criando forma e algumas ideias que eu tive foram boas e outras nem tanto. Acho que no final fico satisfeito com o resultado. Foi ótimo para aprender.
 
 ---
 
 ## Contato
 
-- [Opcional: E-mail pessoal do aluno.]
+- luiz22gcs@gmail.com
 
 ---
 

@@ -24,6 +24,9 @@ public class Pacientes implements PacienteInterface {
         this.exames = new ArrayList<>();
 
     }
+    public String toCSV() {
+        return nome + "," + cpf + "," + idade + "," + id;
+    }
     @Override
     public String getNome() {
         return nome;

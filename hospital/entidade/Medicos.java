@@ -28,6 +28,10 @@ public class Medicos implements MedicosInterface {
     public double getCustoConsulta() {
         return custoConsulta; }
 
+    public String toCSV() {
+        return nome + "," + crm + "," + especialidade + "," + custoConsulta;
+    }
+
     @Override
     public List<Consulta> getHistoricoHorario() {
         return List.of();
