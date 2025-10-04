@@ -47,7 +47,7 @@ https://youtu.be/NmCfBb60ygg
 ## Prints da Execução
 
 1. Menu Principal:  
-   ![Inserir Print 1](C:\Users\Luiz Gustavo\Desktop\menu.png)
+   ![Inserir Print 1](caminho/do/print1.png)
 
 2. Cadastro de Médico:  
    ![Inserir Print 2](caminho/do/print2.png)
