@@ -1,18 +1,21 @@
 package br.com.lucasferreira.sh.Models;
+import br.com.lucasferreira.sh.enums.Especialidade;
 import br.com.lucasferreira.sh.enums.TipoPlano;
+
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.List;
 import java.util.ArrayList;
 
-public class Paciente {
+public  abstract class Paciente {
     private final String nome;
     private final String cpf;
-    private TipoPlano plano;
+    private PlanoDeSaude plano;
     private boolean pcd;
     private final LocalDate dataNascimento; // usar LocalDate para idade nao desatualizar
     private  List<Consulta> historicoPaciente;
-    public Paciente(String nome, String cpf, TipoPlano plano, boolean pcd, LocalDate dataNascimento){
+    public abstract double calcularCustoConsulta(Consulta consulta);
+    public Paciente(String nome, String cpf, PlanoDeSaude plano, boolean pcd, LocalDate dataNascimento){
         this.nome = nome;
         this.cpf = cpf;
         this.plano = plano;
@@ -20,8 +23,9 @@ public class Paciente {
         this.dataNascimento = dataNascimento;
         this.historicoPaciente =  new ArrayList<>();
     }
-    public TipoPlano getPlano(){
-        return plano;
+
+    public PlanoDeSaude getPlano(){
+        return this.plano;
     }
     public String getNome(){
         return nome;
@@ -33,21 +37,33 @@ public class Paciente {
         return cpf;
     }
     public boolean isEspecial(){
-        return (getIdade()>=60 ||this.pcd);
+        return (getIdade()>=60 ||this.pcd || getIdade()<=12);
     }
     public boolean isPcd(){
         return pcd;
     }
     public List<Consulta> getHistoricoDoPaciente(Agenda agenda) {
         List<Consulta> consultasDoPaciente = new ArrayList<>();
-        List<Consulta> historico = agenda.getHistorico(); // pega todas as consultas da agenda
+        List<Consulta> historico = agenda.getHistorico();
 
-        for (Consulta c : historico) {                  // percorre cada consulta
-            if (c.getPaciente().equals(this)) {         // verifica se é o mesmo paciente
-                consultasDoPaciente.add(c);            // adiciona à lista do paciente
+        for (Consulta c : historico) {
+            if (c.getPaciente().equals(this)) {
+                consultasDoPaciente.add(c);
             }
         }
 
-        return consultasDoPaciente;                     // retorna só as consultas deste paciente
+        return consultasDoPaciente;
+    }
+    protected  double calcularCustoAposPlano(Consulta consulta){
+        Medico medico = consulta.getMedico();
+        double custoBaseMedico = medico.getCustoPorConsulta();
+        if(this.getPlano() != null){
+            Especialidade especialidade = medico.getEspecialidade();
+            double descontoPlano = this.getPlano().getDescontoPorEspecialidade(especialidade);
+            return custoBaseMedico * (1 - descontoPlano);
+        }
+        else{
+           return custoBaseMedico;
+        }
     }
 }

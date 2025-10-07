@@ -30,7 +30,7 @@ public class Medico {
     public double getCustoPorConsulta(){
         double precoBase = this.especialidade.getPrecoBase();
         double fatorMultiplicador = 1.0;
-        switch (this.rating ){
+        switch(this.rating ){
             case 5:
                 fatorMultiplicador = 1.2;
                 break;

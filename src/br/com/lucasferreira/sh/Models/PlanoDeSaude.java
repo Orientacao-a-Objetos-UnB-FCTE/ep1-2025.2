@@ -1,14 +1,29 @@
 package br.com.lucasferreira.sh.Models;
 import br.com.lucasferreira.sh.enums.Especialidade;
+import br.com.lucasferreira.sh.enums.TipoPlano;
 import java.util.HashMap;
 import java.util.Map;
 public class PlanoDeSaude{
     private String nome;
-    private boolean isEspecial;
-    private Map<Especialidade, Double> descontosPorEspecialidade;
-    public PlanoDeSaude(String nome, boolean isEspecial) {
+    private boolean cobreInternacaoCurta;
+    private TipoPlano tipo;
+    public PlanoDeSaude(String nome, boolean cobreInternacaoCurta,TipoPlano tipo ) {
         this.nome = nome;
-        this.isEspecial = isEspecial;
-        this.descontosPorEspecialidade = new HashMap<>();
+        this.cobreInternacaoCurta = cobreInternacaoCurta;
+        this.tipo = tipo;
+    }
+    public boolean isCobreInternacaoCurta(){
+        return this.cobreInternacaoCurta;
+    }
+    public String getNome(){
+        return nome;
+    }
+    public double getDescontoPorEspecialidade(Especialidade especialidade){
+        return this.tipo.getDescontos().getOrDefault(especialidade, 0.0);
+    }
+    public double getCustoFinalPorEspecialidade(Especialidade especialidade){
+        double precoBase =especialidade.getPrecoBase();
+        double desconto = getDescontoPorEspecialidade(especialidade);
+        return precoBase *(1-desconto);
     }
 }
