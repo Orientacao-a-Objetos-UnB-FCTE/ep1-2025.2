@@ -1,62 +1,50 @@
 package br.com.lucasferreira.sh.Models;
+
 import java.time.LocalDateTime;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.Month;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.ArrayList;
+
 public class Agenda {
     private List<Consulta> consultas;
-    public Agenda(){
+
+    public Agenda() {
         this.consultas = new ArrayList<>();
     }
-    public void adicionarConsulta(Consulta novaConsulta){
+
+    public void adicionarConsulta(Consulta novaConsulta) {
         this.consultas.add(novaConsulta);
     }
-    public boolean isHorarioDisponivel(LocalDateTime horario, Medico medico,Paciente paciente){
-        for(Consulta verificaDisponibilidade : this.consultas){
-            LocalDateTime verificaHorarioDisponivel = verificaDisponibilidade.getDataHora();
-            if(verificaHorarioDisponivel.isEqual(horario)){
-                return false;
-            }
-            if(verificaDisponibilidade.getMedico().equals(medico)){
-                System.out.println("LOG: Conflito de agenda encontrado para o médico: " + medico.getNome());
-                return false;
-            }
-            if (verificaDisponibilidade.getPaciente().equals(paciente)) {
-                System.out.println("LOG: Conflito de agenda encontrado para o paciente: " + paciente.getNome());
-                return false;
-            }
-            }
 
+    public boolean isHorarioDisponivel(LocalDateTime horario, Medico medico, Paciente paciente) {
+        for (Consulta consultaExistente : this.consultas) {
+            if (consultaExistente.getDataHora().isEqual(horario)) {
+                if (consultaExistente.getMedico().equals(medico)) {
+                    System.out.println("LOG: Conflito de agenda. O médico " + medico.getNome() + " já tem uma consulta neste horário.");
+                    return false;
+                }
+                if (consultaExistente.getPaciente().equals(paciente)) {
+                    System.out.println("LOG: Conflito de agenda. O paciente " + paciente.getNome() + " já tem uma consulta neste horário.");
+                    return false;
+                }
+            }
+        }
         return true;
-        }
-        public boolean marcarConsulta(Consulta marcar){
-        LocalDateTime horarioDesejado = marcar.getDataHora();
-        Medico medicoDesejado = marcar.getMedico();
-        Paciente pacienteDaConsulta = marcar.getPaciente();
-        if(this.isHorarioDisponivel(horarioDesejado,medicoDesejado,pacienteDaConsulta)){
+    }
+
+    public boolean marcarConsulta(Consulta marcar) {
+        if (isHorarioDisponivel(marcar.getDataHora(), marcar.getMedico(), marcar.getPaciente())) {
             this.adicionarConsulta(marcar);
-            System.out.println("INFO: Consulta agendada com sucesso!");
+            System.out.println("INFO: Consulta agendada com sucesso para " + marcar.getDataHora().toLocalDate() + " às " + marcar.getDataHora().toLocalTime() + "!");
             return true;
-        }
-        else{
+        } else {
             System.out.println("INFO: A consulta não foi marcada devido ao conflito de agenda informado acima.");
             return false;
         }
-
-        }
-        public List<Consulta> getHistorico(){
-            Collections.sort(consultas);
-            return this.consultas;
-        }
     }
 
-
-
-
-
-
-
-
+    public List<Consulta> getConsultas() {
+        Collections.sort(consultas);
+        return this.consultas;
+    }
+}

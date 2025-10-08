@@ -26,4 +26,7 @@ public class PlanoDeSaude{
         double desconto = getDescontoPorEspecialidade(especialidade);
         return precoBase *(1-desconto);
     }
+    public TipoPlano getTipo(){
+        return this.tipo;
+    }
 }

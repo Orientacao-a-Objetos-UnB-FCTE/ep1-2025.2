@@ -1,0 +1,4 @@
+nome;cpf;plano_nome;pcd;data_nascimento
+Ana Souza;111.222.333-44;Plano Prata;false;1985-06-15
+Carlos Pereira;444.555.666-77;Plano Diamante;true;1960-03-20
+Lucas Nascimento Ferreira;03143706171;Plano Diamante;false;2006-05-20
