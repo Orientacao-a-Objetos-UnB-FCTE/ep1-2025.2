@@ -1,0 +1,8 @@
+nome;crm;especialidade;rating;plantao
+Dr. Carlos Andrade;CRM/SP 12345;CARDIOLOGIA;5;true
+Dra. Ana Beatriz Costa;CRM/RJ 54321;DERMATOLOGIA;4;false
+Dr. João Pedro Almeida;CRM/MG 67890;ORTOPEDIA;3;true
+Dra. Mariana Vasconcelos;CRM/SP 98765;PEDIATRIA;5;false
+Dr. Ricardo Borges;CRM/BA 11223;NEUROLOGIA;4;false
+Dra. Lúcia Ferreira;CRM/SP 44556;GINECOLOGIA;5;true
+Dr. Marcos Vinicius;CRM/RJ 77889;CLINICA_GERAL;3;true

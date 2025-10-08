@@ -1,0 +1,4 @@
+nome;cobreInternacaoCurta;tipo
+Plano Prata;false;BASICO
+Plano Ouro;true;INTERMEDIARIO
+Plano Diamante;true;PREMIUM
