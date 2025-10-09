@@ -10,59 +10,63 @@ Desenvolvimento de um sistema de gerenciamento hospitalar utilizando os conceito
 
 ## Dados do Aluno
 
-- **Nome completo:** [Preencher aqui]
-- **Matrícula:** [Preencher aqui]
-- **Curso:** [Preencher aqui]
-- **Turma:** [Preencher aqui]
+- **Nome completo:** Ana Vitória Bio de Freitas
+- **Matrícula:** 242005178
+- **Curso:** Engenharias
+- **Turma:** 02
 
 ---
 
 ## Instruções para Compilação e Execução
 
-1. **Compilação:**  
-   [Descrever aqui como compilar o projeto. Exemplo: `javac Main.java` ou o script usado]
+1. Use o compilador `javac` para compilar todas as classes do projeto.
 
-2. **Execução:**  
-   [Descrever aqui como executar o projeto. Exemplo: `java Main` ou o script usado]
+   `javac -cp . main/java/hospital/*.java main/java/hospital/model/*.java main/java/hospital/service/*.java`
 
-3. **Estrutura de Pastas:**  
-   [Descrever aqui as principais pastas do projeto]
+2. **Execução:**
+   Execute a classe principal do sistema, que está no pacote `hospital`.
+
+   `java hospital.Main`
+
+3. **Estrutura de Pastas:**
+   - **`main/java/hospital`**: Contém a classe principal (`Main.java`) e a lógica de persistência e serviço.
+   - **`main/java/hospital/model`**: Contém as classes de modelo (`Pessoa`, `Medico`, `Paciente`, `Consulta`, etc.).
+   - **`main/java/relatorios`**: Pasta onde os dados de persistência (arquivos .csv) são lidos e salvos.
+
+4. **Versão do JAVA utilizada:**
 
 3. **Versão do JAVA utilizada:**  
-   [Descrever aqui como versão do JAVA utilizada no projeto. Sugestão: `java 21`]
+   java version "1.8.0_461" (JAVA 8)
 
 ---
 
 ## Vídeo de Demonstração
 
-- [Inserir o link para o vídeo no YouTube/Drive aqui]
+trabalho sem vídeo
 
 ---
 
 ## Prints da Execução
 
-1. Menu Principal:  
-   ![Inserir Print 1](caminho/do/print1.png)
+1. Menu Principal:
+   ![Menu Principal](prints/menu_principal.jpg)
 
-2. Cadastro de Médico:  
-   ![Inserir Print 2](caminho/do/print2.png)
+2. Cadastro de Médico:
+   ![Cadastro de Médico](prints/cadastro_medico.jpg)
 
-3. Relatório de ?:  
-   ![Inserir Print 3](caminho/do/print3.png)
-
+3. Relatório de ?:
+   ![Relatório de Pacientes](prints/relatorio.jpg)
 ---
 
 ---
 
 ## Observações (Extras ou Dificuldades)
 
-- [Espaço para o aluno comentar qualquer funcionalidade extra que implementou, dificuldades enfrentadas, ou considerações importantes.]
-
----
+A principal adversidade encontrada foi a configuração inicial do ambiente de desenvolvimento. Tive problemas de compatibilidade e reconhecimento do Java e do JDK instalados pelo VS Code, o que levou a uma tentativa de upgrade para o Java 21, seguida de um downgrade para o java 8. Após resolver o problema de configuração e garantir que o vscode reconhecesse corretamente o Java 8, a implementação do sistema foi concluída sem maiores adversidades no código.
 
 ## Contato
 
-- [Opcional: E-mail pessoal do aluno.]
+- anavitoriabiodefreitas@gmail.com
 
 ---
 
