@@ -42,13 +42,13 @@ Desenvolvimento de um sistema de gerenciamento hospitalar utilizando os conceito
 ## Prints da Execução
 
 1. Menu Principal:  
-   ![Inserir Print 1](caminho/do/cadastro_medico.png)
+   ![Inserir Print 1](images/menu_principal.png)
 
 2. Cadastro de Médico:  
-   ![Inserir Print 2](caminho/do/menu_principal.png)
+   ![Inserir Print 2](images/cadastro_medico.png)
 
 3. Relatório de ?:  
-   ![Inserir Print 3](caminho/do/relatorio.png)
+   ![Inserir Print 3](images/relatorio.png)
 
 ---
 
@@ -140,3 +140,4 @@ O sistema deve simular o funcionamento de um hospital com cadastro de *pacientes
 - Exportação de relatórios em formato .csv ou .pdf.  
 - Implementação de testes unitários para classes principais.  
 - Menu visual.
+
