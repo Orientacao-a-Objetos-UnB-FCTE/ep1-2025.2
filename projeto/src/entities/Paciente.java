@@ -2,7 +2,6 @@ package entities;
 
 import java.util.ArrayList;
 import java.util.List;
-
 public class Paciente extends Pessoa{
     private List<AgendamentoConsulta> historicoconsultas;
     private List<Internacao> historicointernacoes;
@@ -54,7 +53,7 @@ public class Paciente extends Pessoa{
         for(AgendamentoConsulta ac:  historicoconsultas) {
             System.out.println("Nome do paciente: "+ ac.getPaciente().getNome());
             System.out.println("Nome do médico: " + ac.getMedico().getNome());
-            System.out.println("Consultório: 0" + ac.getLocal().getNumero() );
+            System.out.println("Consultório: 0" + ac.getLocal().getNumero()); 
             System.out.println("Status: " + ac.getStatus());
             System.out.println("Data e hora: " + ac.getDatahora());
             System.out.println("---------------------------------");

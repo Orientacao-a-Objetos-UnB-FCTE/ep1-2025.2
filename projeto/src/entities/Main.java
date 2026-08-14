@@ -6,6 +6,8 @@ import java.time.format.DateTimeParseException;
 import java.util.List;
 import java.util.Scanner;
 
+//commit teste
+
 
 
 public class Main {
@@ -16,22 +18,27 @@ public class Main {
     public static void main(String[] args) throws Exception {
         
         
-        // Paciente p1 = new Paciente("Cauã Mendes", "05418394", 19, false);
-        // Paciente p2 = new Paciente("Maria Eduarda", "040430", 30, false);
-        // Paciente pEspecial = new Paciente("Eduardo", "3049340", 59, true);
-        // Medico m1 = new Medico("Dr.Rodrigo", "048874387", 40, "3245", "Ortopedista", 400);
-        // Medico m2 = new Medico("Dr.Amanda", "394883", 35, "3456", "Pediatria", 700);
-
-        // LocalDateTime manha = LocalDateTime.of(2025, 4, 17, 8, 0, 0);
-        // LocalDateTime tarde = LocalDateTime.of(2025, 4, 17, 17, 0, 0);
-        // Quarto ala01 = new Quarto(01);
-        // Quarto ala02 = new Quarto(02);
-        // Quarto ala03 = new Quarto(03);
+         Paciente p1 = new Paciente("Cauã Mendes", "05418394", 19, false);
+         Paciente p2 = new Paciente("Maria Eduarda", "040430", 30, false);
+         Paciente pEspecial = new Paciente("Eduardo", "3049340", 59, true);
+         Medico m1 = new Medico("Dr.Rodrigo", "048874387", 40, "3245", "Ortopedista", 400);
+         Medico m2 = new Medico("Dr.Amanda", "394883", 35, "3456", "Pediatria", 700);
+         Medico m3 = new Medico("Dr.Ricardo", "394883", 35, "3456", "Pediatria", 700);
 
 
-        // AgendamentoConsulta agendamento1 = new AgendamentoConsulta(p1, m1, tarde, ala02, "Agendada");
-        // AgendamentoConsulta agendamento2 = new AgendamentoConsulta(p2, m2, manha, ala01, "Agendada");
-        // AgendamentoConsulta agendamento3 = new AgendamentoConsulta(pEspecial, m2, tarde, ala03, "Agendada");
+
+         LocalDateTime manha = LocalDateTime.of(2025, 4, 17, 8, 0, 0);
+        LocalDateTime tarde = LocalDateTime.of(2025, 4, 17, 17, 0, 0);
+        Quarto ala01 = new Quarto(01);
+        Quarto ala02 = new Quarto(02);
+        Quarto ala03 = new Quarto(03);
+        Quarto ala04 = new Quarto(04);
+
+
+         AgendamentoConsulta agendamento1 = new AgendamentoConsulta(p1, m1, tarde, ala02, "Agendada");
+         AgendamentoConsulta agendamento2 = new AgendamentoConsulta(p2, m2, manha, ala01, "Agendada");
+         AgendamentoConsulta agendamento3 = new AgendamentoConsulta(pEspecial, m2, tarde, ala03, "Agendada");
+         AgendamentoConsulta agendamento4 = new AgendamentoConsulta(p1, m3, manha, ala02, "Agendada");
 
             
        
@@ -50,6 +57,7 @@ public class Main {
             System.out.println("3. Consultas");
             System.out.println("4. Sair");
             System.out.print("Escolha: ");
+
 
            String opt = sc.nextLine().trim();
 
